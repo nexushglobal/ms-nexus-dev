@@ -1,110 +1,96 @@
-version: "3.8"
-
 services:
-  # NATS Message Broker
-  nats:
+  # NATS Server
+  nats-server:
     image: nats:2.10-alpine
-    container_name: nexus-nats
     ports:
       - "4222:4222"
       - "6222:6222"
       - "8222:8222"
     command:
-      ["--js", "--sd", "/data", "--http_port", "8222", "--name", "nexus-nats"]
-    volumes:
-      - nats_data:/data
+      [
+        "--cluster_name",
+        "NATS",
+        "--cluster",
+        "nats://0.0.0.0:6222",
+        "--routes",
+        "nats://ruser:T0pS3cr3t@nats-server:6222",
+        "--http_port",
+        "8222",
+      ]
     networks:
-      - nexus-network
-    healthcheck:
-      test:
-        [
-          "CMD",
-          "wget",
-          "--quiet",
-          "--tries=1",
-          "--spider",
-          "http://localhost:8222/healthz",
-        ]
-      interval: 10s
-      timeout: 5s
-      retries: 3
-      start_period: 10s
+      - microservices-network
 
-  # User Microservice con Hot Reload
-  user-service:
-    build:
-      context: ./ms-nexus-user
-      dockerfile: Dockerfile.dev # Dockerfile especial para desarrollo
-      target: development # Stage de desarrollo
-    container_name: nexus-user-service
-    environment:
-      - NODE_ENV=development
-      - NATS_SERVERS=nats://nats:4222
-      - PORT=3001
-    volumes:
-      # Montar código fuente para hot reload
-      - ./ms-nexus-user/src:/app/src:cached
-      - ./ms-nexus-user/package.json:/app/package.json:cached
-      - ./ms-nexus-user/tsconfig.json:/app/tsconfig.json:cached
-      - ./ms-nexus-user/nest-cli.json:/app/nest-cli.json:cached
-      # Excluir node_modules para evitar conflictos
-      - /app/node_modules
-    depends_on:
-      nats:
-        condition: service_healthy
-    networks:
-      - nexus-network
-    restart: unless-stopped
-    command: ["pnpm", "run", "start:dev"] # Usar watch mode
-
-  # Gateway con Hot Reload
+  # Gateway (si existe)
   gateway:
     build:
-      context: ./ms-nexus-gateway
+      context: C:\\Users\\antho\\microservices\\ms-nexus-gateway
       dockerfile: Dockerfile.dev
       target: development
-    container_name: nexus-gateway
-    environment:
-      - NODE_ENV=development
-      - NATS_SERVERS=nats://nats:4222
-      - PORT=8000
     ports:
       - "8000:8000"
+    environment:
+      - PORT=8000
+      - NATS_SERVERS=nats://nats-server:4222
     volumes:
-      # Montar código fuente para hot reload
-      - ./ms-nexus-gateway/src:/app/src:cached
-      - ./ms-nexus-gateway/package.json:/app/package.json:cached
-      - ./ms-nexus-gateway/tsconfig.json:/app/tsconfig.json:cached
-      - ./ms-nexus-gateway/nest-cli.json:/app/nest-cli.json:cached
-      # Excluir node_modules
+      - ../ms-nexus-gateway:/app
       - /app/node_modules
     depends_on:
-      - nats
-      - user-service
+      - nats-server
     networks:
-      - nexus-network
-    restart: unless-stopped
-    command: ["pnpm", "run", "start:dev"] # Usar watch mode
-    healthcheck:
-      test:
-        [
-          "CMD",
-          "wget",
-          "--quiet",
-          "--tries=1",
-          "--spider",
-          "http://localhost:8000/api/users/health",
-        ]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
+      - microservices-network
+    command: ["pnpm", "run", "start:dev"]
+    profiles:
+      - gateway # Solo se ejecuta si se especifica el perfil
 
-volumes:
-  nats_data:
-    driver: local
+  # Microservicio de Usuarios (si existe)
+  ms-users:
+    build:
+      context: C:\\Users\\antho\\microservices\\ms-nexus-users
+      dockerfile: Dockerfile.dev
+      target: development
+    environment:
+      - PORT=3001
+      - NATS_SERVERS=nats://nats-server:4222
+    volumes:
+      - ../ms-nexus-users:/app
+      - /app/node_modules
+    depends_on:
+      - nats-server
+    networks:
+      - microservices-network
+    command: ["pnpm", "run", "start:dev"]
+    profiles:
+      - users # Solo se ejecuta si se especifica el perfil
+
+  # Microservicio de Integración (actual)
+  ms-integration:
+    build:
+      context: C:\\Users\\antho\\microservices\\ms-nexus-integration
+      dockerfile: Dockerfile.dev
+      target: development
+    environment:
+      - PORT=3002
+      - NATS_SERVERS=nats://nats-server:4222
+      # AWS Configuration
+      - AWS_REGION=${AWS_REGION:-us-east-1}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_S3_BUCKET_NAME=${AWS_S3_BUCKET_NAME}
+      # Email Configuration
+      - AWS_SES_SMTP_USERNAME=${AWS_SES_SMTP_USERNAME}
+      - AWS_SES_SMTP_PASSWORD=${AWS_SES_SMTP_PASSWORD}
+      - EMAIL_FROM=${EMAIL_FROM}
+      # API Tokens
+      - PA_TOKEN_PERUAPIS=${PA_TOKEN_PERUAPIS}
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - nats-server
+    networks:
+      - microservices-network
+    command: ["pnpm", "run", "start:dev"]
 
 networks:
-  nexus-network:
+  microservices-network:
     driver: bridge
-    name: nexus-microservices

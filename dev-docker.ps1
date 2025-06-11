@@ -1,8 +1,8 @@
-# dev-docker-hot.ps1 - Script con soporte para hot reload
+# dev-docker.ps1 - Script con soporte para hot reload
 param([string]$Command, [string]$Service)
 
 if (-not $Command) {
-    Write-Host "Uso: .\dev-docker-hot.ps1 comando [servicio]" -ForegroundColor Cyan
+    Write-Host "Uso: .\dev-docker.ps1 comando [servicio]" -ForegroundColor Cyan
     Write-Host ""
     Write-Host "Comandos:" -ForegroundColor Yellow
     Write-Host "  build      - Construir imagenes (solo la primera vez)"
@@ -17,10 +17,10 @@ if (-not $Command) {
     Write-Host "  test       - Probar health checks"
     Write-Host ""
     Write-Host "Ejemplos:"
-    Write-Host "  .\dev-docker-hot.ps1 up"
-    Write-Host "  .\dev-docker-hot.ps1 logs gateway"
-    Write-Host "  .\dev-docker-hot.ps1 restart user-service"
-    Write-Host "  .\dev-docker-hot.ps1 shell gateway"
+    Write-Host "  .\dev-docker.ps1 up"
+    Write-Host "  .\dev-docker.ps1 logs gateway"
+    Write-Host "  .\dev-docker.ps1 restart user-service"
+    Write-Host "  .\dev-docker.ps1 shell gateway"
     exit
 }
 
@@ -39,7 +39,7 @@ switch ($Command.ToLower()) {
         Write-Host "Construyendo imagenes para desarrollo..." -ForegroundColor Blue
         Write-Host "NOTA: Solo necesitas hacer esto la primera vez o cuando cambies package.json" -ForegroundColor Yellow
         docker-compose -f docker-compose.dev.yml build
-        Write-Host "Imagenes construidas! Ahora ejecuta: .\dev-docker-hot.ps1 up" -ForegroundColor Green
+        Write-Host "Imagenes construidas! Ahora ejecuta: .\dev-docker.ps1 up" -ForegroundColor Green
     }
     
     "up" {
@@ -50,7 +50,7 @@ switch ($Command.ToLower()) {
         Write-Host "Gateway: http://localhost:8000" -ForegroundColor Yellow
         Write-Host "NATS Monitor: http://localhost:8222" -ForegroundColor Yellow
         Write-Host ""
-        Write-Host "Para ver logs en tiempo real: .\dev-docker-hot.ps1 logs" -ForegroundColor Cyan
+        Write-Host "Para ver logs en tiempo real: .\dev-docker.ps1 logs" -ForegroundColor Cyan
         Write-Host "Los cambios en tu codigo se reflejaran automaticamente!" -ForegroundColor Magenta
     }
     
@@ -73,7 +73,7 @@ switch ($Command.ToLower()) {
     "restart" {
         if (-not $Service) {
             Write-Host "ERROR: Debes especificar un servicio para reiniciar" -ForegroundColor Red
-            Write-Host "Ejemplo: .\dev-docker-hot.ps1 restart gateway" -ForegroundColor Yellow
+            Write-Host "Ejemplo: .\dev-docker.ps1 restart gateway" -ForegroundColor Yellow
             exit 1
         }
         Write-Host "Reiniciando $Service..." -ForegroundColor Blue
@@ -94,7 +94,7 @@ switch ($Command.ToLower()) {
     "install" {
         if (-not $Service) {
             Write-Host "ERROR: Debes especificar el servicio donde instalar" -ForegroundColor Red
-            Write-Host "Ejemplo: .\dev-docker-hot.ps1 install gateway" -ForegroundColor Yellow
+            Write-Host "Ejemplo: .\dev-docker.ps1 install gateway" -ForegroundColor Yellow
             exit 1
         }
         Write-Host "Instalando dependencias en $Service..." -ForegroundColor Blue
