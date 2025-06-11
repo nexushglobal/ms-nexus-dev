@@ -1,0 +1,110 @@
+version: "3.8"
+
+services:
+  # NATS Message Broker
+  nats:
+    image: nats:2.10-alpine
+    container_name: nexus-nats
+    ports:
+      - "4222:4222"
+      - "6222:6222"
+      - "8222:8222"
+    command:
+      ["--js", "--sd", "/data", "--http_port", "8222", "--name", "nexus-nats"]
+    volumes:
+      - nats_data:/data
+    networks:
+      - nexus-network
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "wget",
+          "--quiet",
+          "--tries=1",
+          "--spider",
+          "http://localhost:8222/healthz",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  # User Microservice con Hot Reload
+  user-service:
+    build:
+      context: ./ms-nexus-user
+      dockerfile: Dockerfile.dev # Dockerfile especial para desarrollo
+      target: development # Stage de desarrollo
+    container_name: nexus-user-service
+    environment:
+      - NODE_ENV=development
+      - NATS_SERVERS=nats://nats:4222
+      - PORT=3001
+    volumes:
+      # Montar código fuente para hot reload
+      - ./ms-nexus-user/src:/app/src:cached
+      - ./ms-nexus-user/package.json:/app/package.json:cached
+      - ./ms-nexus-user/tsconfig.json:/app/tsconfig.json:cached
+      - ./ms-nexus-user/nest-cli.json:/app/nest-cli.json:cached
+      # Excluir node_modules para evitar conflictos
+      - /app/node_modules
+    depends_on:
+      nats:
+        condition: service_healthy
+    networks:
+      - nexus-network
+    restart: unless-stopped
+    command: ["pnpm", "run", "start:dev"] # Usar watch mode
+
+  # Gateway con Hot Reload
+  gateway:
+    build:
+      context: ./ms-nexus-gateway
+      dockerfile: Dockerfile.dev
+      target: development
+    container_name: nexus-gateway
+    environment:
+      - NODE_ENV=development
+      - NATS_SERVERS=nats://nats:4222
+      - PORT=8000
+    ports:
+      - "8000:8000"
+    volumes:
+      # Montar código fuente para hot reload
+      - ./ms-nexus-gateway/src:/app/src:cached
+      - ./ms-nexus-gateway/package.json:/app/package.json:cached
+      - ./ms-nexus-gateway/tsconfig.json:/app/tsconfig.json:cached
+      - ./ms-nexus-gateway/nest-cli.json:/app/nest-cli.json:cached
+      # Excluir node_modules
+      - /app/node_modules
+    depends_on:
+      - nats
+      - user-service
+    networks:
+      - nexus-network
+    restart: unless-stopped
+    command: ["pnpm", "run", "start:dev"] # Usar watch mode
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "wget",
+          "--quiet",
+          "--tries=1",
+          "--spider",
+          "http://localhost:8000/api/users/health",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  nats_data:
+    driver: local
+
+networks:
+  nexus-network:
+    driver: bridge
+    name: nexus-microservices
