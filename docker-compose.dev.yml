@@ -31,7 +31,6 @@ services:
       - nexus-network
     command: mongod --auth
 
-  # Mongo Express (Interfaz web para MongoDB)
   mongo-express:
     image: mongo-express:1.0.2
     container_name: nexus-mongo-express
