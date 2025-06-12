@@ -1,76 +1,84 @@
 services:
-  # NATS Server
-  nats-server:
+  nats:
     image: nats:2.10-alpine
+    container_name: nexus-nats
     ports:
       - "4222:4222"
       - "6222:6222"
       - "8222:8222"
     command:
-      [
-        "--cluster_name",
-        "NATS",
-        "--cluster",
-        "nats://0.0.0.0:6222",
-        "--routes",
-        "nats://ruser:T0pS3cr3t@nats-server:6222",
-        "--http_port",
-        "8222",
-      ]
+      ["--js", "--sd", "/data", "--http_port", "8222", "--name", "nexus-nats"]
+    volumes:
+      - nats_data:/data
     networks:
-      - microservices-network
+      - nexus-network
 
-  # Gateway (si existe)
-  gateway:
+  nexus-gateway:
     build:
-      context: C:\\Users\\antho\\microservices\\ms-nexus-gateway
+      context: ./ms-nexus-gateway
       dockerfile: Dockerfile.dev
       target: development
+    container_name: nexus-gateway
     ports:
       - "8000:8000"
     environment:
+      - NODE_ENV=development
+      - NATS_SERVERS=nats://nats:4222
       - PORT=8000
-      - NATS_SERVERS=nats://nats-server:4222
     volumes:
-      - ../ms-nexus-gateway:/app
+      # Montar código fuente para hot reload
+      - ./ms-nexus-gateway/src:/app/src:cached
+      - ./ms-nexus-gateway/package.json:/app/package.json:cached
+      - ./ms-nexus-gateway/tsconfig.json:/app/tsconfig.json:cached
+      - ./ms-nexus-gateway/nest-cli.json:/app/nest-cli.json:cached
+      # Excluir node_modules
       - /app/node_modules
     depends_on:
-      - nats-server
+      - nats
+      - ms-users
     networks:
-      - microservices-network
+      - nexus-network
     command: ["pnpm", "run", "start:dev"]
+    restart: unless-stopped
     profiles:
       - gateway # Solo se ejecuta si se especifica el perfil
 
   # Microservicio de Usuarios (si existe)
   ms-users:
     build:
-      context: C:\\Users\\antho\\microservices\\ms-nexus-users
-      dockerfile: Dockerfile.dev
-      target: development
+      context: ./ms-nexus-user
+      dockerfile: Dockerfile.dev # Dockerfile especial para desarrollo
+      target: development # Stage de desarrollo
     environment:
+      - NODE_ENV=development
+      - NATS_SERVERS=nats://nats:4222
       - PORT=3001
-      - NATS_SERVERS=nats://nats-server:4222
     volumes:
-      - ../ms-nexus-users:/app
+      # Montar código fuente para hot reload
+      - ./ms-nexus-user/src:/app/src:cached
+      - ./ms-nexus-user/package.json:/app/package.json:cached
+      - ./ms-nexus-user/tsconfig.json:/app/tsconfig.json:cached
+      - ./ms-nexus-user/nest-cli.json:/app/nest-cli.json:cached
+      # Excluir node_modules para evitar conflictos
       - /app/node_modules
     depends_on:
-      - nats-server
+      - nats
     networks:
-      - microservices-network
+      - nexus-network
     command: ["pnpm", "run", "start:dev"]
+    restart: unless-stopped
     profiles:
       - users # Solo se ejecuta si se especifica el perfil
 
   # Microservicio de Integración (actual)
   ms-integration:
     build:
-      context: C:\\Users\\antho\\microservices\\ms-nexus-integration
+      context: ./ms-nexus-integration
       dockerfile: Dockerfile.dev
       target: development
     environment:
       - PORT=3002
-      - NATS_SERVERS=nats://nats-server:4222
+      - NATS_SERVERS=nats://nats:4222
       # AWS Configuration
       - AWS_REGION=${AWS_REGION:-us-east-1}
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
@@ -83,14 +91,25 @@ services:
       # API Tokens
       - PA_TOKEN_PERUAPIS=${PA_TOKEN_PERUAPIS}
     volumes:
-      - .:/app
+      # Montar código fuente para hot reload
+      - ./ms-nexus-integration/src:/app/src:cached
+      - ./ms-nexus-integration/package.json:/app/package.json:cached
+      - ./ms-nexus-integration/tsconfig.json:/app/tsconfig.json:cached
+      - ./ms-nexus-integration/nest-cli.json:/app/nest-cli.json:cached
+      # Excluir node_modules para evitar conflictos
       - /app/node_modules
     depends_on:
-      - nats-server
+      - nats
     networks:
-      - microservices-network
+      - nexus-network
     command: ["pnpm", "run", "start:dev"]
+    restart: unless-stopped
+
+volumes:
+  nats_data:
+    driver: local
 
 networks:
-  microservices-network:
+  nexus-network:
     driver: bridge
+    name: nexus-microservices
