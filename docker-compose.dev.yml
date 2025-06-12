@@ -40,15 +40,14 @@ services:
       - nexus-network
     command: ["pnpm", "run", "start:dev"]
     restart: unless-stopped
-    profiles:
-      - gateway # Solo se ejecuta si se especifica el perfil
+    # REMOVIDO: profiles section
 
-  # Microservicio de Usuarios (si existe)
+  # Microservicio de Usuarios
   ms-users:
     build:
       context: ./ms-nexus-user
-      dockerfile: Dockerfile.dev # Dockerfile especial para desarrollo
-      target: development # Stage de desarrollo
+      dockerfile: Dockerfile.dev
+      target: development
     environment:
       - NODE_ENV=development
       - NATS_SERVERS=nats://nats:4222
@@ -67,10 +66,9 @@ services:
       - nexus-network
     command: ["pnpm", "run", "start:dev"]
     restart: unless-stopped
-    profiles:
-      - users # Solo se ejecuta si se especifica el perfil
+    # REMOVIDO: profiles section
 
-  # Microservicio de Integración (actual)
+  # Microservicio de Integración
   ms-integration:
     build:
       context: ./ms-nexus-integration
