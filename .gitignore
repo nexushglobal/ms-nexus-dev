@@ -1,4 +1,5 @@
 /ms-nexus-gateway
 /ms-nexus-user
 /ms-nexus-integration
+/ms-nexus-auth
 .env

@@ -31,22 +31,6 @@ services:
       - nexus-network
     command: mongod --auth
 
-  mongo-express:
-    image: mongo-express:1.0.2
-    container_name: nexus-mongo-express
-    restart: always
-    ports:
-      - "8081:8081"
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
-      ME_CONFIG_MONGODB_ADMINPASSWORD: password123
-      ME_CONFIG_MONGODB_URL: mongodb://admin:password123@mongodb:27017/
-      ME_CONFIG_BASICAUTH: false
-    depends_on:
-      - mongodb
-    networks:
-      - nexus-network
-
   nexus-gateway:
     build:
       context: ./ms-nexus-gateway
@@ -128,6 +112,35 @@ services:
       - ./ms-nexus-integration/package.json:/app/package.json:cached
       - ./ms-nexus-integration/tsconfig.json:/app/tsconfig.json:cached
       - ./ms-nexus-integration/nest-cli.json:/app/nest-cli.json:cached
+      # Excluir node_modules para evitar conflictos
+      - /app/node_modules
+    depends_on:
+      - nats
+    networks:
+      - nexus-network
+    command: ["pnpm", "run", "start:dev"]
+    restart: unless-stopped
+
+  # Microservicio de Auth
+  ms-auth:
+    build:
+      context: ./ms-nexus-auth
+      dockerfile: Dockerfile.dev
+      target: development
+    environment:
+      - PORT=3003
+      - NATS_SERVERS=nats://nats:4222
+      # JWT Configuration
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_REFRESH_SECRET=${JWT_REFRESH_SECRET}
+      - FRONTEND_URL=${FRONTEND_URL}
+
+    volumes:
+      # Montar código fuente para hot reload
+      - ./ms-nexus-auth/src:/app/src:cached
+      - ./ms-nexus-auth/package.json:/app/package.json:cached
+      - ./ms-nexus-auth/tsconfig.json:/app/tsconfig.json:cached
+      - ./ms-nexus-auth/nest-cli.json:/app/nest-cli.json:cached
       # Excluir node_modules para evitar conflictos
       - /app/node_modules
     depends_on:
