@@ -2,4 +2,10 @@
 /ms-nexus-user
 /ms-nexus-integration
 /ms-nexus-auth
+/ms-nexus-point
+/ms-nexus-membership
+/ms-nexus-payment
+/ms-nexus-order
+/frontend-nexus-app
+
 .env

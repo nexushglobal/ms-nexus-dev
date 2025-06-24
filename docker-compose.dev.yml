@@ -150,12 +150,134 @@ services:
     command: ["pnpm", "run", "start:dev"]
     restart: unless-stopped
 
+  ms-payment:
+    build:
+      context: ./ms-nexus-payment
+      dockerfile: Dockerfile.dev
+      target: development
+    environment:
+      - PORT=3004
+      - NATS_SERVERS=nats://nats:4222
+      # Stripe Configuration
+      - PAYMENTS_DATABASE_URL=postgres://admin:password@pg-payments:5432/payments_db
+    volumes:
+      # Montar código fuente para hot reload
+      - ./ms-nexus-payment/src:/app/src:cached
+      - ./ms-nexus-payment/package.json:/app/package.json:cached
+      - ./ms-nexus-payment/tsconfig.json:/app/tsconfig.json:cached
+      - ./ms-nexus-payment/nest-cli.json:/app/nest-cli.json:cached
+      # Excluir node_modules para evitar conflictos
+      - /app/node_modules
+    depends_on:
+      - pg-payments
+      - nats
+    networks:
+      - nexus-network
+    command: ["pnpm", "run", "start:dev"]
+    restart: unless-stopped
+  pg-payments:
+    image: postgres:17
+    container_name: nexus-payments-db
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: payments_db
+    volumes:
+      - payments_data:/var/lib/postgresql/data
+    networks:
+      - nexus-network
+
+  ms-membership:
+    build:
+      context: ./ms-nexus-membership
+      dockerfile: Dockerfile.dev
+      target: development
+    environment:
+      - PORT=3005
+      - NATS_SERVERS=nats://nats:4222
+      - MEMBERSHIP_DATABASE_URL=postgres://admin:password@pg-membership:5432/membership_db
+    volumes:
+      # Montar código fuente para hot reload
+      - ./ms-nexus-membership/src:/app/src:cached
+      - ./ms-nexus-membership/package.json:/app/package.json:cached
+      - ./ms-nexus-membership/tsconfig.json:/app/tsconfig.json:cached
+      - ./ms-nexus-membership/nest-cli.json:/app/nest-cli.json:cached
+      # Excluir node_modules para evitar conflictos
+      - /app/node_modules
+    depends_on:
+      - nats
+      - pg-membership
+    networks:
+      - nexus-network
+    command: ["pnpm", "run", "start:dev"]
+    restart: unless-stopped
+  pg-membership:
+    image: postgres:17
+    container_name: nexus-membership-db
+    restart: always
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: membership_db
+    volumes:
+      - membership_data:/var/lib/postgresql/data
+    networks:
+      - nexus-network
+  ms-point:
+    build:
+      context: ./ms-nexus-point
+      dockerfile: Dockerfile.dev
+      target: development
+    environment:
+      - PORT=3006
+      - NATS_SERVERS=nats://nats:4222
+      - POINT_DATABASE_URL=postgres://admin:password@pg-point:5432/point_db
+    volumes:
+      # Montar código fuente para hot reload
+      - ./ms-nexus-point/src:/app/src:cached
+      - ./ms-nexus-point/package.json:/app/package.json:cached
+      - ./ms-nexus-point/tsconfig.json:/app/tsconfig.json:cached
+      - ./ms-nexus-point/nest-cli.json:/app/nest-cli.json:cached
+      # Excluir node_modules para evitar conflictos
+      - /app/node_modules
+    depends_on:
+      - nats
+      - pg-point
+    networks:
+      - nexus-network
+    command: ["pnpm", "run", "start:dev"]
+    restart: unless-stopped
+  pg-point:
+    image: postgres:17
+    container_name: nexus-point-db
+    restart: always
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: point_db
+    volumes:
+      - point_data:/var/lib/postgresql/data
+    networks:
+      - nexus-network
 volumes:
   nats_data:
     driver: local
   mongodb_data:
     driver: local
   mongodb_config:
+    driver: local
+  payments_data:
+    driver: local
+  membership_data:
+    driver: local
+  point_data:
     driver: local
 
 networks:
