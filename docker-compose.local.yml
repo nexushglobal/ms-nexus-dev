@@ -1,3 +1,6 @@
+env_file:
+  - .env
+
 services:
   # NATS Message Broker
   nats:
@@ -13,6 +16,24 @@ services:
       - nats_data:/data
     networks:
       - nexus-network
+
+  # MongoDB Database
+  mongodb:
+    image: mongo:7.0
+    container_name: nexus-mongodb
+    restart: always
+    ports:
+      - "${MONGODB_EXTERNAL_PORT:-27017}:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
+    volumes:
+      - mongodb_data:/data/db
+      - mongodb_config:/data/configdb
+    networks:
+      - nexus-network
+    command: mongod --auth
 
   # API Gateway
   nexus-gateway:
@@ -53,7 +74,6 @@ services:
       - NODE_ENV=${NODE_ENV}
       - NATS_SERVERS=${NATS_SERVERS}
       - PORT=${MS_USERS_PORT}
-      # MongoDB Connection (External Server)
       - MONGODB_URI=${MONGODB_URI}
     volumes:
       # Montar código fuente para hot reload
@@ -65,6 +85,7 @@ services:
       - /app/node_modules
     depends_on:
       - nats
+      - mongodb
     networks:
       - nexus-network
     command: ["pnpm", "run", "start:dev"]
@@ -135,6 +156,22 @@ services:
     command: ["pnpm", "run", "start:dev"]
     restart: unless-stopped
 
+  # PostgreSQL - Payments Database
+  pg-payments:
+    image: postgres:17
+    container_name: nexus-payments-db
+    restart: always
+    ports:
+      - "${POSTGRES_PAYMENTS_EXTERNAL_PORT:-5432}:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_PAYMENTS_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PAYMENTS_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_PAYMENTS_DB}
+    volumes:
+      - payments_data:/var/lib/postgresql/data
+    networks:
+      - nexus-network
+
   # Microservicio de Payment
   ms-payment:
     build:
@@ -145,7 +182,7 @@ services:
       - NODE_ENV=${NODE_ENV}
       - PORT=${MS_PAYMENT_PORT}
       - NATS_SERVERS=${NATS_SERVERS}
-      # PostgreSQL Configuration (External Server)
+      # PostgreSQL Configuration
       - PAYMENTS_DATABASE_URL=${PAYMENTS_DATABASE_URL}
     volumes:
       # Montar código fuente para hot reload
@@ -156,11 +193,29 @@ services:
       # Excluir node_modules para evitar conflictos
       - /app/node_modules
     depends_on:
+      - pg-payments
       - nats
     networks:
       - nexus-network
     command: ["pnpm", "run", "start:dev"]
     restart: unless-stopped
+
+  # PostgreSQL - Membership Database
+  pg-membership:
+    image: postgres:17
+    container_name: nexus-membership-db
+    restart: always
+    ports:
+      - "${POSTGRES_MEMBERSHIP_EXTERNAL_PORT:-5435}:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_MEMBERSHIP_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_MEMBERSHIP_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_MEMBERSHIP_DB}
+      POSTGRES_INITDB_ARGS: "--auth-host=md5"
+    volumes:
+      - membership_data:/var/lib/postgresql/data
+    networks:
+      - nexus-network
 
   # Microservicio de Membership
   ms-membership:
@@ -172,7 +227,7 @@ services:
       - NODE_ENV=${NODE_ENV}
       - PORT=${MS_MEMBERSHIP_PORT}
       - NATS_SERVERS=${NATS_SERVERS}
-      # PostgreSQL Configuration (External Server)
+      # PostgreSQL Configuration
       - MEMBERSHIP_DATABASE_URL=${MEMBERSHIP_DATABASE_URL}
     volumes:
       # Montar código fuente para hot reload
@@ -184,10 +239,27 @@ services:
       - /app/node_modules
     depends_on:
       - nats
+      - pg-membership
     networks:
       - nexus-network
     command: ["pnpm", "run", "start:dev"]
     restart: unless-stopped
+
+  # PostgreSQL - Point Database
+  pg-point:
+    image: postgres:17
+    container_name: nexus-point-db
+    restart: always
+    ports:
+      - "${POSTGRES_POINT_EXTERNAL_PORT:-5434}:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_POINT_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_POINT_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_POINT_DB}
+    volumes:
+      - point_data:/var/lib/postgresql/data
+    networks:
+      - nexus-network
 
   # Microservicio de Point
   ms-point:
@@ -199,7 +271,7 @@ services:
       - NODE_ENV=${NODE_ENV}
       - PORT=${MS_POINT_PORT}
       - NATS_SERVERS=${NATS_SERVERS}
-      # PostgreSQL Configuration (External Server)
+      # PostgreSQL Configuration
       - POINT_DATABASE_URL=${POINT_DATABASE_URL}
     volumes:
       # Montar código fuente para hot reload
@@ -211,14 +283,25 @@ services:
       - /app/node_modules
     depends_on:
       - nats
+      - pg-point
     networks:
       - nexus-network
     command: ["pnpm", "run", "start:dev"]
     restart: unless-stopped
 
-# Solo volúmenes necesarios para NATS
+# Volúmenes persistentes
 volumes:
   nats_data:
+    driver: local
+  mongodb_data:
+    driver: local
+  mongodb_config:
+    driver: local
+  payments_data:
+    driver: local
+  membership_data:
+    driver: local
+  point_data:
     driver: local
 
 # Red de contenedores

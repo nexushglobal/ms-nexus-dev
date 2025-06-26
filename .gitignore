@@ -9,3 +9,4 @@
 /frontend-nexus-app
 
 .env
+.env.test
