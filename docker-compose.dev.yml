@@ -219,11 +219,12 @@ services:
     container_name: nexus-membership-db
     restart: always
     ports:
-      - "5433:5432"
+      - "5435:5432"
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: password
       POSTGRES_DB: membership_db
+      POSTGRES_INITDB_ARGS: "--auth-host=md5"
     volumes:
       - membership_data:/var/lib/postgresql/data
     networks:

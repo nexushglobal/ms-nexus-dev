@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "code": "RECONSUMPTION",
+    "description": "Pago mensual para mantener la membresía activa y acumular puntos binarios",
+    "createdAt": "2025-04-14 23:44:29.088517",
+    "updatedAt": "2025-06-10 06:00:59.489297"
+  },
+  {
+    "id": 3,
+    "code": "MEMBERSHIP_PAYMENT",
+    "description": "Pago para la adquisición de una nueva membresía",
+    "createdAt": "2025-04-14 23:44:29.138151",
+    "updatedAt": "2025-06-10 06:00:59.489472"
+  },
+  {
+    "id": 2,
+    "code": "PLAN_UPGRADE",
+    "description": "Pago para actualizar a un plan de membresía superior",
+    "createdAt": "2025-04-14 23:44:29.091991",
+    "updatedAt": "2025-06-10 06:00:59.489695"
+  },
+  {
+    "id": 4,
+    "code": "ORDER_PAYMENT",
+    "description": "Pago para confirmar la orden de compra",
+    "createdAt": "2025-05-07 08:16:05.439579",
+    "updatedAt": "2025-06-10 06:00:59.489904"
+  }
+]
