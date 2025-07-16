@@ -70,6 +70,32 @@ services:
     command: ["pnpm", "run", "start:dev"]
     restart: unless-stopped
 
+  ms-unilevel:
+    build:
+      context: ./ms-nexus-unilevel
+      dockerfile: Dockerfile.dev
+      target: development
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - PORT=${MS_UNILEVEL_PORT}
+      - NATS_SERVERS=${NATS_SERVERS}
+      # PostgreSQL Configuration (External Server)
+      - UNILEVEL_DATABASE_URL=${UNILEVEL_DATABASE_URL}
+    volumes:
+      # Montar código fuente para hot reload
+      - ./ms-nexus-unilevel/src:/app/src:cached
+      - ./ms-nexus-unilevel/package.json:/app/package.json:cached
+      - ./ms-nexus-unilevel/tsconfig.json:/app/tsconfig.json:cached
+      - ./ms-nexus-unilevel/nest-cli.json:/app/nest-cli.json:cached
+      # Excluir node_modules para evitar conflictos
+      - /app/node_modules
+    depends_on:
+      - nats
+    networks:
+      - nexus-network
+    command: ["pnpm", "run", "start:dev"]
+    restart: unless-stopped
+
   # Microservicio de Integración
   ms-integration:
     build:
@@ -147,6 +173,8 @@ services:
       - NATS_SERVERS=${NATS_SERVERS}
       # PostgreSQL Configuration (External Server)
       - PAYMENTS_DATABASE_URL=${PAYMENTS_DATABASE_URL}
+      - PK_CULQUI=${PK_CULQUI}
+      - SK_CULQUI=${SK_CULQUI}
     volumes:
       # Montar código fuente para hot reload
       - ./ms-nexus-payment/src:/app/src:cached
