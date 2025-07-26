@@ -1,0 +1,80 @@
+SELECT
+    o.id,
+    o."totalItems",
+    o."totalAmount",
+    o.status,
+    o.metadata,
+    o."createdAt",
+    o."updatedAt",
+    JSON_BUILD_OBJECT(
+            'userId', u.id,
+            'userEmail', u.email,
+            'userName', COALESCE(
+                    CONCAT(pi."firstName", ' ', pi."lastName"),
+                    u.nickname,
+                    u.email
+                        )
+    ) AS "user",
+    COALESCE(order_history_agg.order_history, '[]'::json) AS "orderHistory",
+    COALESCE(order_details_agg.order_details, '[]'::json) AS "orderDetails"
+FROM
+    public.orders o
+        INNER JOIN public.users u ON o.user_id = u.id
+        LEFT JOIN public.personal_info pi ON u.id = pi.user_id
+        LEFT JOIN (
+        SELECT
+            oh.order_id,
+            JSON_AGG(
+                    JSON_BUILD_OBJECT(
+                            'id', oh.id,
+                            'performedBy', CASE
+                                               WHEN oh.performed_by_id IS NOT NULL THEN
+                                                   JSON_BUILD_OBJECT(
+                                                           'userId', pu.id,
+                                                           'userEmail', pu.email,
+                                                           'userName', COALESCE(
+                                                                   CONCAT(ppi."firstName", ' ', ppi."lastName"),
+                                                                   pu.nickname,
+                                                                   pu.email
+                                                                       )
+                                                   )
+                                END,
+                            'action', oh.action,
+                            'changes', oh.changes,
+                            'notes', oh.notes,
+                            'metadata', oh.metadata,
+                            'createdAt', oh."createdAt"
+                    )
+                    ORDER BY oh."createdAt"
+            ) AS order_history
+        FROM
+            public.orders_history oh
+                LEFT JOIN public.users pu ON oh.performed_by_id = pu.id
+                LEFT JOIN public.personal_info ppi ON pu.id = ppi.user_id
+        GROUP BY
+            oh.order_id
+    ) order_history_agg ON o.id = order_history_agg.order_id
+        LEFT JOIN (
+        SELECT
+            od.order_id,
+            JSON_AGG(
+                    JSON_BUILD_OBJECT(
+                            'id', od.id,
+                            'price', od.price,
+                            'quantity', od.quantity,
+                            'createdAt', od."createdAt",
+                            'updatedAt', od."updatedAt",
+                            'product', JSON_BUILD_OBJECT(
+                                    'id', p.id
+                                       )
+                    )
+                    ORDER BY od."createdAt"
+            ) AS order_details
+        FROM
+            public.orders_details od
+                LEFT JOIN public.products p ON od.product_id = p.id
+        GROUP BY
+            od.order_id
+    ) order_details_agg ON o.id = order_details_agg.order_id
+ORDER BY
+    o."createdAt" DESC;
