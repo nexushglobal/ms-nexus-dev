@@ -8,6 +8,7 @@
 /ms-nexus-order
 /frontend-nexus-app
 /ms-nexus-unilevel
-
+/ms-nexus-order
+/py-migration-nexus
 .env
 .env.test
