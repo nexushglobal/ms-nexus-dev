@@ -244,7 +244,32 @@ services:
     command: ["pnpm", "run", "start:dev"]
     restart: unless-stopped
 
-# Solo volúmenes necesarios para NATS
+  # Solo volúmenes necesarios para NATS
+  ms-order:
+    build:
+      context: ./ms-nexus-order
+      dockerfile: Dockerfile.dev
+      target: development
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - PORT=${MS_ORDER_PORT}
+      - NATS_SERVERS=${NATS_SERVERS}
+      # PostgreSQL Configuration (External Server)
+      - ORDER_DATABASE_URL=${ORDER_DATABASE_URL}
+    volumes:
+      # Montar código fuente para hot reload
+      - ./ms-nexus-order/src:/app/src:cached
+      - ./ms-nexus-order/package.json:/app/package.json:cached
+      - ./ms-nexus-order/tsconfig.json:/app/tsconfig.json:cached
+      - ./ms-nexus-order/nest-cli.json:/app/nest-cli.json:cached
+      # Excluir node_modules para evitar conflictos
+      - /app/node_modules
+    depends_on:
+      - nats
+    networks:
+      - nexus-network
+    command: ["pnpm", "run", "start:dev"]
+    restart: unless-stopped
 volumes:
   nats_data:
     driver: local

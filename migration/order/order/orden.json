@@ -1,302 +1,697 @@
 [
   {
+    "id": 26,
+    "totalItems": 1,
+    "totalAmount": 99.00,
+    "status": "APROBADO",
+    "metadata": {
+      "Productos": [
+        {
+          "SKU": "HEA-REN73026492",
+          "Nombre": "RENEW COLLAGEN",
+          "Cantidad": 1,
+          "Precio": 99
+        }
+      ]
+    },
+    "createdAt": "2025-07-27 22:03:25.248928",
+    "updatedAt": "2025-07-30 17:51:01.189092",
+    "user": {
+      "userEmail": "trabajodelfuturo@hotmail.com"
+    },
+    "orderHistory": [
+      {
+        "id": "72588fc0-57b8-4608-93f4-81ecad74c96f",
+        "performedBy": {
+          "userEmail": "trabajodelfuturo@hotmail.com"
+        },
+        "action": "CREADO",
+        "changes": null,
+        "notes": "Orden creada",
+        "metadata": null,
+        "createdAt": "2025-07-27T22:03:25.248928"
+      },
+      {
+        "id": "dc2a25f7-4f64-4a70-8810-73ac27604dcc",
+        "performedBy": {
+          "userEmail": "finanzas@nexusplatform.com"
+        },
+        "action": "APROBADO",
+        "changes": {
+          "Estado anterior": "PENDIENTE",
+          "Nuevo estado": "APROBADO"
+        },
+        "notes": "Orden aprobada por aprobación de pago",
+        "metadata": null,
+        "createdAt": "2025-07-30T17:51:01.189092"
+      }
+    ],
+    "orderDetails": [
+      {
+        "id": "ef925565-69e4-4780-8f01-a76f72eeb353",
+        "price": 99.00,
+        "quantity": 1,
+        "createdAt": "2025-07-27T22:03:25.248928",
+        "updatedAt": "2025-07-27T22:03:25.248928",
+        "product": {
+          "id": 2
+        }
+      }
+    ]
+  },
+  {
     "id": 25,
     "totalItems": 1,
     "totalAmount": 49.00,
     "status": "APROBADO",
-    "metadata": {"notes":"Moringa","Productos":[{"SKU":"HEA-LIF38213428","Nombre":"LIFE GREEN MORINGA","Cantidad":1,"Precio":49}]},
+    "metadata": {
+      "notes": "Moringa",
+      "Productos": [
+        {
+          "SKU": "HEA-LIF38213428",
+          "Nombre": "LIFE GREEN MORINGA",
+          "Cantidad": 1,
+          "Precio": 49
+        }
+      ]
+    },
     "createdAt": "2025-07-25 01:30:46.458205",
     "updatedAt": "2025-07-25 20:18:58.872743",
-    "user": {"userId" : "0019895d-a133-4943-a6ba-ba04a1b4c4a3", "userEmail" : "trabajodelfuturo@hotmail.com", "userName" : "Ernesto Ala Vasquez"},
-    "orderHistory": [{"id" : "9cc5928d-f887-43fd-ba80-d1d2e2a3c749", "performedBy" : {"userId" : "0019895d-a133-4943-a6ba-ba04a1b4c4a3", "userEmail" : "trabajodelfuturo@hotmail.com", "userName" : "Ernesto Ala Vasquez"}, "action" : "CREADO", "changes" : null, "notes" : "Moringa", "metadata" : null, "createdAt" : "2025-07-25T01:30:46.458205"}, {"id" : "0d33a2d2-42ba-495d-8227-8f511f405b15", "performedBy" : {"userId" : "c86077fb-bc6f-4b4d-adf8-4d53545eaea8", "userEmail" : "finanzas@nexusplatform.com", "userName" : "Finanzas Nexus"}, "action" : "APROBADO", "changes" : {"Estado anterior":"PENDIENTE","Nuevo estado":"APROBADO"}, "notes" : "Orden aprobada por aprobación de pago", "metadata" : null, "createdAt" : "2025-07-25T20:18:58.872743"}],
-    "orderDetails": [{"id" : "62c4777c-ff5b-41a8-ba7d-7608c2e1407a", "price" : 49.00, "quantity" : 1, "createdAt" : "2025-07-25T01:30:46.458205", "updatedAt" : "2025-07-25T01:30:46.458205", "product" : {"id" : 4}}]
+    "user": {
+      "userEmail": "trabajodelfuturo@hotmail.com"
+    },
+    "orderHistory": [
+      {
+        "id": "9cc5928d-f887-43fd-ba80-d1d2e2a3c749",
+        "performedBy": {
+          "userEmail": "trabajodelfuturo@hotmail.com"
+        },
+        "action": "CREADO",
+        "changes": null,
+        "notes": "Moringa",
+        "metadata": null,
+        "createdAt": "2025-07-25T01:30:46.458205"
+      },
+      {
+        "id": "0d33a2d2-42ba-495d-8227-8f511f405b15",
+        "performedBy": {
+          "userEmail": "finanzas@nexusplatform.com"
+        },
+        "action": "APROBADO",
+        "changes": {
+          "Estado anterior": "PENDIENTE",
+          "Nuevo estado": "APROBADO"
+        },
+        "notes": "Orden aprobada por aprobación de pago",
+        "metadata": null,
+        "createdAt": "2025-07-25T20:18:58.872743"
+      }
+    ],
+    "orderDetails": [
+      {
+        "id": "62c4777c-ff5b-41a8-ba7d-7608c2e1407a",
+        "price": 49.00,
+        "quantity": 1,
+        "createdAt": "2025-07-25T01:30:46.458205",
+        "updatedAt": "2025-07-25T01:30:46.458205",
+        "product": {
+          "id": 4
+        }
+      }
+    ]
   },
   {
     "id": 24,
     "totalItems": 4,
     "totalAmount": 276.00,
     "status": "APROBADO",
-    "metadata": {"Productos":[{"SKU":"HEA-LIF38213428","Nombre":"LIFE GREEN MORINGA","Cantidad":2,"Precio":49},{"SKU":"HEA-REN73026492","Nombre":"RENEW COLLAGEN","Cantidad":1,"Precio":99},{"SKU":"HEA-SPE64961444","Nombre":"SPEED ENERGY DRINK","Cantidad":1,"Precio":79}]},
+    "metadata": {
+      "Productos": [
+        {
+          "SKU": "HEA-LIF38213428",
+          "Nombre": "LIFE GREEN MORINGA",
+          "Cantidad": 2,
+          "Precio": 49
+        },
+        {
+          "SKU": "HEA-REN73026492",
+          "Nombre": "RENEW COLLAGEN",
+          "Cantidad": 1,
+          "Precio": 99
+        },
+        {
+          "SKU": "HEA-SPE64961444",
+          "Nombre": "SPEED ENERGY DRINK",
+          "Cantidad": 1,
+          "Precio": 79
+        }
+      ]
+    },
     "createdAt": "2025-07-21 23:54:48.544534",
     "updatedAt": "2025-07-21 23:54:48.544534",
-    "user": {"userId" : "66e8d613-bc44-4379-8aaa-88b07174578f", "userEmail" : "hinostrozayaquely@gmail.com", "userName" : "Raquel Jheny Hinostroza Llanco"},
-    "orderHistory": [{"id" : "2dd708ca-2565-40be-863e-b7130fde92d1", "performedBy" : {"userId" : "66e8d613-bc44-4379-8aaa-88b07174578f", "userEmail" : "hinostrozayaquely@gmail.com", "userName" : "Raquel Jheny Hinostroza Llanco"}, "action" : "CREADO", "changes" : null, "notes" : "Orden creada", "metadata" : null, "createdAt" : "2025-07-21T23:54:48.544534"}, {"id" : "b922a96f-aff6-4c73-9bae-ee669e3293f4", "performedBy" : {"userId" : "66e8d613-bc44-4379-8aaa-88b07174578f", "userEmail" : "hinostrozayaquely@gmail.com", "userName" : "Raquel Jheny Hinostroza Llanco"}, "action" : "APROBADO", "changes" : null, "notes" : "Pago aprobado con 276 puntos", "metadata" : null, "createdAt" : "2025-07-21T23:54:48.544534"}],
-    "orderDetails": [{"id" : "f54435d7-f076-403c-80be-9fb691f21184", "price" : 49.00, "quantity" : 2, "createdAt" : "2025-07-21T23:54:48.544534", "updatedAt" : "2025-07-21T23:54:48.544534", "product" : {"id" : 4}}, {"id" : "e0673341-17a4-4985-9a08-405705de33b7", "price" : 99.00, "quantity" : 1, "createdAt" : "2025-07-21T23:54:48.544534", "updatedAt" : "2025-07-21T23:54:48.544534", "product" : {"id" : 2}}, {"id" : "eaccd246-65f5-4333-991c-1e5d5a3157f7", "price" : 79.00, "quantity" : 1, "createdAt" : "2025-07-21T23:54:48.544534", "updatedAt" : "2025-07-21T23:54:48.544534", "product" : {"id" : 5}}]
+    "user": {
+      "userEmail": "hinostrozayaquely@gmail.com"
+    },
+    "orderHistory": [
+      {
+        "id": "b922a96f-aff6-4c73-9bae-ee669e3293f4",
+        "performedBy": {
+          "userEmail": "hinostrozayaquely@gmail.com"
+        },
+        "action": "APROBADO",
+        "changes": null,
+        "notes": "Pago aprobado con 276 puntos",
+        "metadata": null,
+        "createdAt": "2025-07-21T23:54:48.544534"
+      },
+      {
+        "id": "2dd708ca-2565-40be-863e-b7130fde92d1",
+        "performedBy": {
+          "userEmail": "hinostrozayaquely@gmail.com"
+        },
+        "action": "CREADO",
+        "changes": null,
+        "notes": "Orden creada",
+        "metadata": null,
+        "createdAt": "2025-07-21T23:54:48.544534"
+      }
+    ],
+    "orderDetails": [
+      {
+        "id": "f54435d7-f076-403c-80be-9fb691f21184",
+        "price": 49.00,
+        "quantity": 2,
+        "createdAt": "2025-07-21T23:54:48.544534",
+        "updatedAt": "2025-07-21T23:54:48.544534",
+        "product": {
+          "id": 4
+        }
+      },
+      {
+        "id": "e0673341-17a4-4985-9a08-405705de33b7",
+        "price": 99.00,
+        "quantity": 1,
+        "createdAt": "2025-07-21T23:54:48.544534",
+        "updatedAt": "2025-07-21T23:54:48.544534",
+        "product": {
+          "id": 2
+        }
+      },
+      {
+        "id": "eaccd246-65f5-4333-991c-1e5d5a3157f7",
+        "price": 79.00,
+        "quantity": 1,
+        "createdAt": "2025-07-21T23:54:48.544534",
+        "updatedAt": "2025-07-21T23:54:48.544534",
+        "product": {
+          "id": 5
+        }
+      }
+    ]
   },
   {
     "id": 23,
     "totalItems": 3,
     "totalAmount": 177.00,
     "status": "APROBADO",
-    "metadata": {"Productos":[{"SKU":"HEA-LIF38213428","Nombre":"LIFE GREEN MORINGA","Cantidad":2,"Precio":49},{"SKU":"HEA-SPE64961444","Nombre":"SPEED ENERGY DRINK","Cantidad":1,"Precio":79}]},
+    "metadata": {
+      "Productos": [
+        {
+          "SKU": "HEA-LIF38213428",
+          "Nombre": "LIFE GREEN MORINGA",
+          "Cantidad": 2,
+          "Precio": 49
+        },
+        {
+          "SKU": "HEA-SPE64961444",
+          "Nombre": "SPEED ENERGY DRINK",
+          "Cantidad": 1,
+          "Precio": 79
+        }
+      ]
+    },
     "createdAt": "2025-07-21 23:36:24.512594",
     "updatedAt": "2025-07-23 02:27:46.429086",
-    "user": {"userId" : "21d5e135-8e84-4c63-a107-f1992b5611fa", "userEmail" : "janettegiovanam@gmail.com", "userName" : "janette mori"},
-    "orderHistory": [{"id" : "235fe1af-5012-4f27-8b45-d4f164e15131", "performedBy" : {"userId" : "21d5e135-8e84-4c63-a107-f1992b5611fa", "userEmail" : "janettegiovanam@gmail.com", "userName" : "janette mori"}, "action" : "CREADO", "changes" : null, "notes" : "Orden creada", "metadata" : null, "createdAt" : "2025-07-21T23:36:24.512594"}, {"id" : "a5966bd8-e6f1-4714-a488-6628b5924fd9", "performedBy" : {"userId" : "c86077fb-bc6f-4b4d-adf8-4d53545eaea8", "userEmail" : "finanzas@nexusplatform.com", "userName" : "Finanzas Nexus"}, "action" : "APROBADO", "changes" : {"Estado anterior":"PENDIENTE","Nuevo estado":"APROBADO"}, "notes" : "Orden aprobada por aprobación de pago", "metadata" : null, "createdAt" : "2025-07-23T02:27:46.429086"}],
-    "orderDetails": [{"id" : "445f9181-5289-418d-bc2d-841c0f783aff", "price" : 49.00, "quantity" : 2, "createdAt" : "2025-07-21T23:36:24.512594", "updatedAt" : "2025-07-21T23:36:24.512594", "product" : {"id" : 4}}, {"id" : "d7b72856-bd55-46e0-b3a9-22fd98c01649", "price" : 79.00, "quantity" : 1, "createdAt" : "2025-07-21T23:36:24.512594", "updatedAt" : "2025-07-21T23:36:24.512594", "product" : {"id" : 5}}]
+    "user": {
+      "userEmail": "janettegiovanam@gmail.com"
+    },
+    "orderHistory": [
+      {
+        "id": "235fe1af-5012-4f27-8b45-d4f164e15131",
+        "performedBy": {
+          "userEmail": "janettegiovanam@gmail.com"
+        },
+        "action": "CREADO",
+        "changes": null,
+        "notes": "Orden creada",
+        "metadata": null,
+        "createdAt": "2025-07-21T23:36:24.512594"
+      },
+      {
+        "id": "a5966bd8-e6f1-4714-a488-6628b5924fd9",
+        "performedBy": {
+          "userEmail": "finanzas@nexusplatform.com"
+        },
+        "action": "APROBADO",
+        "changes": {
+          "Estado anterior": "PENDIENTE",
+          "Nuevo estado": "APROBADO"
+        },
+        "notes": "Orden aprobada por aprobación de pago",
+        "metadata": null,
+        "createdAt": "2025-07-23T02:27:46.429086"
+      }
+    ],
+    "orderDetails": [
+      {
+        "id": "445f9181-5289-418d-bc2d-841c0f783aff",
+        "price": 49.00,
+        "quantity": 2,
+        "createdAt": "2025-07-21T23:36:24.512594",
+        "updatedAt": "2025-07-21T23:36:24.512594",
+        "product": {
+          "id": 4
+        }
+      },
+      {
+        "id": "d7b72856-bd55-46e0-b3a9-22fd98c01649",
+        "price": 79.00,
+        "quantity": 1,
+        "createdAt": "2025-07-21T23:36:24.512594",
+        "updatedAt": "2025-07-21T23:36:24.512594",
+        "product": {
+          "id": 5
+        }
+      }
+    ]
   },
   {
     "id": 22,
     "totalItems": 1,
     "totalAmount": 99.00,
     "status": "APROBADO",
-    "metadata": {"Productos":[{"SKU":"HEA-REN73026492","Nombre":"RENEW COLLAGEN","Cantidad":1,"Precio":99}]},
+    "metadata": {
+      "Productos": [
+        {
+          "SKU": "HEA-REN73026492",
+          "Nombre": "RENEW COLLAGEN",
+          "Cantidad": 1,
+          "Precio": 99
+        }
+      ]
+    },
     "createdAt": "2025-07-21 23:08:40.669581",
     "updatedAt": "2025-07-21 23:08:40.669581",
-    "user": {"userId" : "21d5e135-8e84-4c63-a107-f1992b5611fa", "userEmail" : "janettegiovanam@gmail.com", "userName" : "janette mori"},
-    "orderHistory": [{"id" : "be5a8eec-d8c1-4714-a2ed-c5a58b94484f", "performedBy" : {"userId" : "21d5e135-8e84-4c63-a107-f1992b5611fa", "userEmail" : "janettegiovanam@gmail.com", "userName" : "janette mori"}, "action" : "CREADO", "changes" : null, "notes" : "Orden creada", "metadata" : null, "createdAt" : "2025-07-21T23:08:40.669581"}, {"id" : "321897be-57e0-43eb-afe8-48a714f64629", "performedBy" : {"userId" : "21d5e135-8e84-4c63-a107-f1992b5611fa", "userEmail" : "janettegiovanam@gmail.com", "userName" : "janette mori"}, "action" : "APROBADO", "changes" : null, "notes" : "Pago aprobado con 99 puntos", "metadata" : null, "createdAt" : "2025-07-21T23:08:40.669581"}],
-    "orderDetails": [{"id" : "a660da3e-2696-41a8-8dd1-b323565358f7", "price" : 99.00, "quantity" : 1, "createdAt" : "2025-07-21T23:08:40.669581", "updatedAt" : "2025-07-21T23:08:40.669581", "product" : {"id" : 2}}]
+    "user": {
+      "userEmail": "janettegiovanam@gmail.com"
+    },
+    "orderHistory": [
+      {
+        "id": "be5a8eec-d8c1-4714-a2ed-c5a58b94484f",
+        "performedBy": {
+          "userEmail": "janettegiovanam@gmail.com"
+        },
+        "action": "CREADO",
+        "changes": null,
+        "notes": "Orden creada",
+        "metadata": null,
+        "createdAt": "2025-07-21T23:08:40.669581"
+      },
+      {
+        "id": "321897be-57e0-43eb-afe8-48a714f64629",
+        "performedBy": {
+          "userEmail": "janettegiovanam@gmail.com"
+        },
+        "action": "APROBADO",
+        "changes": null,
+        "notes": "Pago aprobado con 99 puntos",
+        "metadata": null,
+        "createdAt": "2025-07-21T23:08:40.669581"
+      }
+    ],
+    "orderDetails": [
+      {
+        "id": "a660da3e-2696-41a8-8dd1-b323565358f7",
+        "price": 99.00,
+        "quantity": 1,
+        "createdAt": "2025-07-21T23:08:40.669581",
+        "updatedAt": "2025-07-21T23:08:40.669581",
+        "product": {
+          "id": 2
+        }
+      }
+    ]
   },
   {
     "id": 21,
     "totalItems": 4,
     "totalAmount": 286.00,
     "status": "APROBADO",
-    "metadata": {"Productos":[{"SKU":"HEA-LIF38213428","Nombre":"LIFE GREEN MORINGA","Cantidad":2,"Precio":49},{"SKU":"HEA-CAP55281834","Nombre":"CAPUCCINO BLEND EXCLUSIVE","Cantidad":1,"Precio":89},{"SKU":"HEA-REN73026492","Nombre":"RENEW COLLAGEN","Cantidad":1,"Precio":99}]},
+    "metadata": {
+      "Productos": [
+        {
+          "SKU": "HEA-LIF38213428",
+          "Nombre": "LIFE GREEN MORINGA",
+          "Cantidad": 2,
+          "Precio": 49
+        },
+        {
+          "SKU": "HEA-CAP55281834",
+          "Nombre": "CAPUCCINO BLEND EXCLUSIVE",
+          "Cantidad": 1,
+          "Precio": 89
+        },
+        {
+          "SKU": "HEA-REN73026492",
+          "Nombre": "RENEW COLLAGEN",
+          "Cantidad": 1,
+          "Precio": 99
+        }
+      ]
+    },
     "createdAt": "2025-07-21 23:06:15.899974",
     "updatedAt": "2025-07-21 23:06:15.899974",
-    "user": {"userId" : "9a3f8452-9ba8-4614-b30a-b378f207a792", "userEmail" : "jhaime_05@hotmail.com", "userName" : "Jaime Huamani Pariona"},
-    "orderHistory": [{"id" : "8896f509-ddfc-4a74-9d2c-c62fb0bd1bee", "performedBy" : {"userId" : "9a3f8452-9ba8-4614-b30a-b378f207a792", "userEmail" : "jhaime_05@hotmail.com", "userName" : "Jaime Huamani Pariona"}, "action" : "APROBADO", "changes" : null, "notes" : "Pago aprobado con 286 puntos", "metadata" : null, "createdAt" : "2025-07-21T23:06:15.899974"}, {"id" : "47bdd75c-c6df-4ef3-abc1-1d6bb1fdbd07", "performedBy" : {"userId" : "9a3f8452-9ba8-4614-b30a-b378f207a792", "userEmail" : "jhaime_05@hotmail.com", "userName" : "Jaime Huamani Pariona"}, "action" : "CREADO", "changes" : null, "notes" : "Orden creada", "metadata" : null, "createdAt" : "2025-07-21T23:06:15.899974"}],
-    "orderDetails": [{"id" : "edc2a01a-9e89-4fe6-a71f-56562bdc6834", "price" : 49.00, "quantity" : 2, "createdAt" : "2025-07-21T23:06:15.899974", "updatedAt" : "2025-07-21T23:06:15.899974", "product" : {"id" : 4}}, {"id" : "f7cf0adb-2c7a-44e8-a5c8-f4e1548b5d5e", "price" : 89.00, "quantity" : 1, "createdAt" : "2025-07-21T23:06:15.899974", "updatedAt" : "2025-07-21T23:06:15.899974", "product" : {"id" : 1}}, {"id" : "c07b3f1b-766a-41fb-9acb-8f992916765f", "price" : 99.00, "quantity" : 1, "createdAt" : "2025-07-21T23:06:15.899974", "updatedAt" : "2025-07-21T23:06:15.899974", "product" : {"id" : 2}}]
+    "user": {
+      "userEmail": "jhaime_05@hotmail.com"
+    },
+    "orderHistory": [
+      {
+        "id": "47bdd75c-c6df-4ef3-abc1-1d6bb1fdbd07",
+        "performedBy": {
+          "userEmail": "jhaime_05@hotmail.com"
+        },
+        "action": "CREADO",
+        "changes": null,
+        "notes": "Orden creada",
+        "metadata": null,
+        "createdAt": "2025-07-21T23:06:15.899974"
+      },
+      {
+        "id": "8896f509-ddfc-4a74-9d2c-c62fb0bd1bee",
+        "performedBy": {
+          "userEmail": "jhaime_05@hotmail.com"
+        },
+        "action": "APROBADO",
+        "changes": null,
+        "notes": "Pago aprobado con 286 puntos",
+        "metadata": null,
+        "createdAt": "2025-07-21T23:06:15.899974"
+      }
+    ],
+    "orderDetails": [
+      {
+        "id": "edc2a01a-9e89-4fe6-a71f-56562bdc6834",
+        "price": 49.00,
+        "quantity": 2,
+        "createdAt": "2025-07-21T23:06:15.899974",
+        "updatedAt": "2025-07-21T23:06:15.899974",
+        "product": {
+          "id": 4
+        }
+      },
+      {
+        "id": "f7cf0adb-2c7a-44e8-a5c8-f4e1548b5d5e",
+        "price": 89.00,
+        "quantity": 1,
+        "createdAt": "2025-07-21T23:06:15.899974",
+        "updatedAt": "2025-07-21T23:06:15.899974",
+        "product": {
+          "id": 1
+        }
+      },
+      {
+        "id": "c07b3f1b-766a-41fb-9acb-8f992916765f",
+        "price": 99.00,
+        "quantity": 1,
+        "createdAt": "2025-07-21T23:06:15.899974",
+        "updatedAt": "2025-07-21T23:06:15.899974",
+        "product": {
+          "id": 2
+        }
+      }
+    ]
   },
   {
     "id": 20,
     "totalItems": 4,
     "totalAmount": 316.00,
     "status": "APROBADO",
-    "metadata": {"Productos":[{"SKU":"HEA-CAP55281834","Nombre":"CAPUCCINO BLEND EXCLUSIVE","Cantidad":3,"Precio":89},{"SKU":"HEA-LIF38213428","Nombre":"LIFE GREEN MORINGA","Cantidad":1,"Precio":49}]},
+    "metadata": {
+      "Productos": [
+        {
+          "SKU": "HEA-CAP55281834",
+          "Nombre": "CAPUCCINO BLEND EXCLUSIVE",
+          "Cantidad": 3,
+          "Precio": 89
+        },
+        {
+          "SKU": "HEA-LIF38213428",
+          "Nombre": "LIFE GREEN MORINGA",
+          "Cantidad": 1,
+          "Precio": 49
+        }
+      ]
+    },
     "createdAt": "2025-07-20 22:49:49.740243",
     "updatedAt": "2025-07-20 22:49:49.740243",
-    "user": {"userId" : "9d119abe-f6a0-4b19-a6ad-c4e06aff80ad", "userEmail" : "walterhuaman44@gmail.com", "userName" : "walter alberthi huaman cardenas"},
-    "orderHistory": [{"id" : "43c70ecd-c7ff-44dc-be41-b0e1aaf01882", "performedBy" : {"userId" : "9d119abe-f6a0-4b19-a6ad-c4e06aff80ad", "userEmail" : "walterhuaman44@gmail.com", "userName" : "walter alberthi huaman cardenas"}, "action" : "CREADO", "changes" : null, "notes" : "Orden creada", "metadata" : null, "createdAt" : "2025-07-20T22:49:49.740243"}, {"id" : "e5bc83c5-9771-401d-b083-81e948a4eff9", "performedBy" : {"userId" : "9d119abe-f6a0-4b19-a6ad-c4e06aff80ad", "userEmail" : "walterhuaman44@gmail.com", "userName" : "walter alberthi huaman cardenas"}, "action" : "APROBADO", "changes" : null, "notes" : "Pago aprobado con 316 puntos", "metadata" : null, "createdAt" : "2025-07-20T22:49:49.740243"}],
-    "orderDetails": [{"id" : "b7392e33-1e64-4f04-a812-6e031cde3f4c", "price" : 89.00, "quantity" : 3, "createdAt" : "2025-07-20T22:49:49.740243", "updatedAt" : "2025-07-20T22:49:49.740243", "product" : {"id" : 1}}, {"id" : "5777eaac-daa7-485c-83cb-eaf285717284", "price" : 49.00, "quantity" : 1, "createdAt" : "2025-07-20T22:49:49.740243", "updatedAt" : "2025-07-20T22:49:49.740243", "product" : {"id" : 4}}]
+    "user": {
+      "userEmail": "walterhuaman44@gmail.com"
+    },
+    "orderHistory": [
+      {
+        "id": "e5bc83c5-9771-401d-b083-81e948a4eff9",
+        "performedBy": {
+          "userEmail": "walterhuaman44@gmail.com"
+        },
+        "action": "APROBADO",
+        "changes": null,
+        "notes": "Pago aprobado con 316 puntos",
+        "metadata": null,
+        "createdAt": "2025-07-20T22:49:49.740243"
+      },
+      {
+        "id": "43c70ecd-c7ff-44dc-be41-b0e1aaf01882",
+        "performedBy": {
+          "userEmail": "walterhuaman44@gmail.com"
+        },
+        "action": "CREADO",
+        "changes": null,
+        "notes": "Orden creada",
+        "metadata": null,
+        "createdAt": "2025-07-20T22:49:49.740243"
+      }
+    ],
+    "orderDetails": [
+      {
+        "id": "b7392e33-1e64-4f04-a812-6e031cde3f4c",
+        "price": 89.00,
+        "quantity": 3,
+        "createdAt": "2025-07-20T22:49:49.740243",
+        "updatedAt": "2025-07-20T22:49:49.740243",
+        "product": {
+          "id": 1
+        }
+      },
+      {
+        "id": "5777eaac-daa7-485c-83cb-eaf285717284",
+        "price": 49.00,
+        "quantity": 1,
+        "createdAt": "2025-07-20T22:49:49.740243",
+        "updatedAt": "2025-07-20T22:49:49.740243",
+        "product": {
+          "id": 4
+        }
+      }
+    ]
   },
   {
     "id": 19,
     "totalItems": 3,
     "totalAmount": 297.00,
     "status": "APROBADO",
-    "metadata": {"Productos":[{"SKU":"HEA-REN73026492","Nombre":"RENEW COLLAGEN","Cantidad":3,"Precio":99}]},
+    "metadata": {
+      "Productos": [
+        {
+          "SKU": "HEA-REN73026492",
+          "Nombre": "RENEW COLLAGEN",
+          "Cantidad": 3,
+          "Precio": 99
+        }
+      ]
+    },
     "createdAt": "2025-07-20 19:41:46.855232",
     "updatedAt": "2025-07-20 19:41:46.855232",
-    "user": {"userId" : "dec027b4-7ed5-4560-ac56-70cb77b51d00", "userEmail" : "luis.mas.ochentaysiete@gmail.com", "userName" : "Luis miguel Aguilar Silva"},
-    "orderHistory": [{"id" : "8f8a5e34-1da3-44ec-aea8-1f1d868d8635", "performedBy" : {"userId" : "dec027b4-7ed5-4560-ac56-70cb77b51d00", "userEmail" : "luis.mas.ochentaysiete@gmail.com", "userName" : "Luis miguel Aguilar Silva"}, "action" : "CREADO", "changes" : null, "notes" : "Orden creada", "metadata" : null, "createdAt" : "2025-07-20T19:41:46.855232"}, {"id" : "f2f7f94f-da79-4c4b-90b5-6d0c20cd4676", "performedBy" : {"userId" : "dec027b4-7ed5-4560-ac56-70cb77b51d00", "userEmail" : "luis.mas.ochentaysiete@gmail.com", "userName" : "Luis miguel Aguilar Silva"}, "action" : "APROBADO", "changes" : null, "notes" : "Pago aprobado con 297 puntos", "metadata" : null, "createdAt" : "2025-07-20T19:41:46.855232"}],
-    "orderDetails": [{"id" : "6362d5dc-0d8a-4c9b-8ce4-eaff7ecd84e4", "price" : 99.00, "quantity" : 3, "createdAt" : "2025-07-20T19:41:46.855232", "updatedAt" : "2025-07-20T19:41:46.855232", "product" : {"id" : 2}}]
+    "user": {
+      "userEmail": "luis.mas.ochentaysiete@gmail.com"
+    },
+    "orderHistory": [
+      {
+        "id": "8f8a5e34-1da3-44ec-aea8-1f1d868d8635",
+        "performedBy": {
+          "userEmail": "luis.mas.ochentaysiete@gmail.com"
+        },
+        "action": "CREADO",
+        "changes": null,
+        "notes": "Orden creada",
+        "metadata": null,
+        "createdAt": "2025-07-20T19:41:46.855232"
+      },
+      {
+        "id": "f2f7f94f-da79-4c4b-90b5-6d0c20cd4676",
+        "performedBy": {
+          "userEmail": "luis.mas.ochentaysiete@gmail.com"
+        },
+        "action": "APROBADO",
+        "changes": null,
+        "notes": "Pago aprobado con 297 puntos",
+        "metadata": null,
+        "createdAt": "2025-07-20T19:41:46.855232"
+      }
+    ],
+    "orderDetails": [
+      {
+        "id": "6362d5dc-0d8a-4c9b-8ce4-eaff7ecd84e4",
+        "price": 99.00,
+        "quantity": 3,
+        "createdAt": "2025-07-20T19:41:46.855232",
+        "updatedAt": "2025-07-20T19:41:46.855232",
+        "product": {
+          "id": 2
+        }
+      }
+    ]
   },
   {
     "id": 18,
     "totalItems": 1,
     "totalAmount": 49.00,
     "status": "APROBADO",
-    "metadata": {"Productos":[{"SKU":"HEA-LIF38213428","Nombre":"LIFE GREEN MORINGA","Cantidad":1,"Precio":49}]},
+    "metadata": {
+      "Productos": [
+        {
+          "SKU": "HEA-LIF38213428",
+          "Nombre": "LIFE GREEN MORINGA",
+          "Cantidad": 1,
+          "Precio": 49
+        }
+      ]
+    },
     "createdAt": "2025-07-12 21:19:53.198878",
     "updatedAt": "2025-07-12 21:40:53.082878",
-    "user": {"userId" : "917dd646-9812-402b-bfd5-0bb1c1cf6b79", "userEmail" : "gza64@hotmail.com", "userName" : "Gaby del Rosario Zapata Atoche"},
-    "orderHistory": [{"id" : "66bb1bed-87a1-45a3-b1c8-0b62b5e96575", "performedBy" : {"userId" : "917dd646-9812-402b-bfd5-0bb1c1cf6b79", "userEmail" : "gza64@hotmail.com", "userName" : "Gaby del Rosario Zapata Atoche"}, "action" : "CREADO", "changes" : null, "notes" : "Orden creada", "metadata" : null, "createdAt" : "2025-07-12T21:19:53.198878"}, {"id" : "39e4fd62-e2db-4082-92bf-d7df643dcc75", "performedBy" : {"userId" : "c86077fb-bc6f-4b4d-adf8-4d53545eaea8", "userEmail" : "finanzas@nexusplatform.com", "userName" : "Finanzas Nexus"}, "action" : "APROBADO", "changes" : {"Estado anterior":"PENDIENTE","Nuevo estado":"APROBADO"}, "notes" : "Orden aprobada por aprobación de pago", "metadata" : null, "createdAt" : "2025-07-12T21:40:53.082878"}],
-    "orderDetails": [{"id" : "e57806be-c2a2-438c-a9d8-29dc5f3fdedd", "price" : 49.00, "quantity" : 1, "createdAt" : "2025-07-12T21:19:53.198878", "updatedAt" : "2025-07-12T21:19:53.198878", "product" : {"id" : 4}}]
+    "user": {
+      "userEmail": "gza64@hotmail.com"
+    },
+    "orderHistory": [
+      {
+        "id": "66bb1bed-87a1-45a3-b1c8-0b62b5e96575",
+        "performedBy": {
+          "userEmail": "gza64@hotmail.com"
+        },
+        "action": "CREADO",
+        "changes": null,
+        "notes": "Orden creada",
+        "metadata": null,
+        "createdAt": "2025-07-12T21:19:53.198878"
+      },
+      {
+        "id": "39e4fd62-e2db-4082-92bf-d7df643dcc75",
+        "performedBy": {
+          "userEmail": "finanzas@nexusplatform.com"
+        },
+        "action": "APROBADO",
+        "changes": {
+          "Estado anterior": "PENDIENTE",
+          "Nuevo estado": "APROBADO"
+        },
+        "notes": "Orden aprobada por aprobación de pago",
+        "metadata": null,
+        "createdAt": "2025-07-12T21:40:53.082878"
+      }
+    ],
+    "orderDetails": [
+      {
+        "id": "e57806be-c2a2-438c-a9d8-29dc5f3fdedd",
+        "price": 49.00,
+        "quantity": 1,
+        "createdAt": "2025-07-12T21:19:53.198878",
+        "updatedAt": "2025-07-12T21:19:53.198878",
+        "product": {
+          "id": 4
+        }
+      }
+    ]
   },
   {
     "id": 17,
     "totalItems": 3,
     "totalAmount": 247.00,
     "status": "APROBADO",
-    "metadata": {"Productos":[{"SKU":"HEA-LIF38213428","Nombre":"LIFE GREEN MORINGA","Cantidad":1,"Precio":49},{"SKU":"HEA-REN73026492","Nombre":"RENEW COLLAGEN","Cantidad":2,"Precio":99}]},
+    "metadata": {
+      "Productos": [
+        {
+          "SKU": "HEA-LIF38213428",
+          "Nombre": "LIFE GREEN MORINGA",
+          "Cantidad": 1,
+          "Precio": 49
+        },
+        {
+          "SKU": "HEA-REN73026492",
+          "Nombre": "RENEW COLLAGEN",
+          "Cantidad": 2,
+          "Precio": 99
+        }
+      ]
+    },
     "createdAt": "2025-07-12 13:37:44.025840",
     "updatedAt": "2025-07-12 13:37:44.025840",
-    "user": {"userId" : "917dd646-9812-402b-bfd5-0bb1c1cf6b79", "userEmail" : "gza64@hotmail.com", "userName" : "Gaby del Rosario Zapata Atoche"},
-    "orderHistory": [{"id" : "b5bf7929-61ab-4870-b50c-0cf3d64e7841", "performedBy" : {"userId" : "917dd646-9812-402b-bfd5-0bb1c1cf6b79", "userEmail" : "gza64@hotmail.com", "userName" : "Gaby del Rosario Zapata Atoche"}, "action" : "CREADO", "changes" : null, "notes" : "Orden creada", "metadata" : null, "createdAt" : "2025-07-12T13:37:44.02584"}, {"id" : "6ab61658-4d32-4720-b64b-21a3a7f49f80", "performedBy" : {"userId" : "917dd646-9812-402b-bfd5-0bb1c1cf6b79", "userEmail" : "gza64@hotmail.com", "userName" : "Gaby del Rosario Zapata Atoche"}, "action" : "APROBADO", "changes" : null, "notes" : "Pago aprobado con 247 puntos", "metadata" : null, "createdAt" : "2025-07-12T13:37:44.02584"}],
-    "orderDetails": [{"id" : "d434a243-2cd8-4647-bb1d-9db4e5fbc468", "price" : 49.00, "quantity" : 1, "createdAt" : "2025-07-12T13:37:44.02584", "updatedAt" : "2025-07-12T13:37:44.02584", "product" : {"id" : 4}}, {"id" : "7e21e2eb-e8f9-4324-a396-7e83b64caff7", "price" : 99.00, "quantity" : 2, "createdAt" : "2025-07-12T13:37:44.02584", "updatedAt" : "2025-07-12T13:37:44.02584", "product" : {"id" : 2}}]
-  },
-  {
-    "id": 16,
-    "totalItems": 3,
-    "totalAmount": 277.00,
-    "status": "APROBADO",
-    "metadata": {"Productos":[{"SKU":"HEA-REN73026492","Nombre":"RENEW COLLAGEN","Cantidad":2,"Precio":99},{"SKU":"HEA-SPE64961444","Nombre":"SPEED ENERGY DRINK","Cantidad":1,"Precio":79}]},
-    "createdAt": "2025-07-07 20:40:10.347728",
-    "updatedAt": "2025-07-07 20:40:10.347728",
-    "user": {"userId" : "0019895d-a133-4943-a6ba-ba04a1b4c4a3", "userEmail" : "trabajodelfuturo@hotmail.com", "userName" : "Ernesto Ala Vasquez"},
-    "orderHistory": [{"id" : "5b19dac5-14c6-4d71-a00a-9499589e8d92", "performedBy" : {"userId" : "0019895d-a133-4943-a6ba-ba04a1b4c4a3", "userEmail" : "trabajodelfuturo@hotmail.com", "userName" : "Ernesto Ala Vasquez"}, "action" : "CREADO", "changes" : null, "notes" : "Orden creada", "metadata" : null, "createdAt" : "2025-07-07T20:40:10.347728"}, {"id" : "ee7e620e-1ff1-44f7-82bc-3d3af9ede4e1", "performedBy" : {"userId" : "0019895d-a133-4943-a6ba-ba04a1b4c4a3", "userEmail" : "trabajodelfuturo@hotmail.com", "userName" : "Ernesto Ala Vasquez"}, "action" : "APROBADO", "changes" : null, "notes" : "Pago aprobado con 277 puntos", "metadata" : null, "createdAt" : "2025-07-07T20:40:10.347728"}],
-    "orderDetails": [{"id" : "83563002-0d76-4506-96a3-f9be3ea6ca76", "price" : 99.00, "quantity" : 2, "createdAt" : "2025-07-07T20:40:10.347728", "updatedAt" : "2025-07-07T20:40:10.347728", "product" : {"id" : 2}}, {"id" : "bbcb5cae-11b2-4348-9e0f-aee6c66fe3e3", "price" : 79.00, "quantity" : 1, "createdAt" : "2025-07-07T20:40:10.347728", "updatedAt" : "2025-07-07T20:40:10.347728", "product" : {"id" : 5}}]
-  },
-  {
-    "id": 15,
-    "totalItems": 3,
-    "totalAmount": 277.00,
-    "status": "APROBADO",
-    "metadata": {"Productos":[{"SKU":"HEA-REN73026492","Nombre":"RENEW COLLAGEN","Cantidad":2,"Precio":99},{"SKU":"HEA-SPE64961444","Nombre":"SPEED ENERGY DRINK","Cantidad":1,"Precio":79}]},
-    "createdAt": "2025-06-20 02:26:04.020195",
-    "updatedAt": "2025-06-20 02:26:59.046099",
-    "user": {"userId" : "15e29bd6-c67c-40ef-af29-d38fb8803c08", "userEmail" : "carloscutipam04@gmail.com", "userName" : "Carlos Cutipa Menacho"},
-    "orderHistory": [{"id" : "62067583-e62e-46da-bb9d-2f8f9c4b984c", "performedBy" : {"userId" : "15e29bd6-c67c-40ef-af29-d38fb8803c08", "userEmail" : "carloscutipam04@gmail.com", "userName" : "Carlos Cutipa Menacho"}, "action" : "CREADO", "changes" : null, "notes" : "Orden creada", "metadata" : null, "createdAt" : "2025-06-20T02:26:04.020195"}, {"id" : "fb52994c-39c1-475e-9dde-18191ba1862d", "performedBy" : {"userId" : "c86077fb-bc6f-4b4d-adf8-4d53545eaea8", "userEmail" : "finanzas@nexusplatform.com", "userName" : "Finanzas Nexus"}, "action" : "APROBADO", "changes" : {"Estado anterior":"PENDIENTE","Nuevo estado":"APROBADO"}, "notes" : "Orden aprobada por aprobación de pago", "metadata" : null, "createdAt" : "2025-06-20T02:26:59.046099"}],
-    "orderDetails": [{"id" : "56d89de1-eb4a-4d6e-8ed1-845398b29c25", "price" : 99.00, "quantity" : 2, "createdAt" : "2025-06-20T02:26:04.020195", "updatedAt" : "2025-06-20T02:26:04.020195", "product" : {"id" : 2}}, {"id" : "ae0a4c03-b2a1-472d-8d11-59e6db3c868c", "price" : 79.00, "quantity" : 1, "createdAt" : "2025-06-20T02:26:04.020195", "updatedAt" : "2025-06-20T02:26:04.020195", "product" : {"id" : 5}}]
-  },
-  {
-    "id": 2,
-    "totalItems": 4,
-    "totalAmount": 286.00,
-    "status": "APROBADO",
-    "metadata": {"notes":"Estoy reconsumiendo estos productos","Productos":[{"SKU":"HEA-LIF38213428","Nombre":"LIFE GREEN MORINGA","Cantidad":2,"Precio":49},{"SKU":"HEA-CAP55281834","Nombre":"CAPUCCINO BLEND EXCLUSIVE","Cantidad":1,"Precio":89},{"SKU":"HEA-REN73026492","Nombre":"RENEW COLLAGEN","Cantidad":1,"Precio":99}]},
-    "createdAt": "2025-06-20 00:07:36.821000",
-    "updatedAt": "2025-05-20 00:07:36.821780",
-    "user": {"userId" : "1c7afae4-4833-489d-8a65-b3b6a3a7e16e", "userEmail" : "enriquejesussotoflores@gmail.com", "userName" : "Enrique Jesús Soto Flores"},
-    "orderHistory": [{"id" : "913470a9-b505-43cb-9241-17cb3b63ec46", "performedBy" : {"userId" : "1c7afae4-4833-489d-8a65-b3b6a3a7e16e", "userEmail" : "enriquejesussotoflores@gmail.com", "userName" : "Enrique Jesús Soto Flores"}, "action" : "CREADO", "changes" : null, "notes" : "Estoy reconsumiendo estos productos", "metadata" : null, "createdAt" : "2025-05-20T00:07:36.82178"}, {"id" : "c27d263c-17ff-41f4-91dd-967583d5e42f", "performedBy" : {"userId" : "1c7afae4-4833-489d-8a65-b3b6a3a7e16e", "userEmail" : "enriquejesussotoflores@gmail.com", "userName" : "Enrique Jesús Soto Flores"}, "action" : "APROBADO", "changes" : null, "notes" : "Pago aprobado con 286 puntos", "metadata" : null, "createdAt" : "2025-05-20T00:07:36.82178"}],
-    "orderDetails": [{"id" : "137640dc-172b-4e36-914e-0e3df7ab197b", "price" : 49.00, "quantity" : 2, "createdAt" : "2025-05-20T00:07:36.82178", "updatedAt" : "2025-05-20T00:07:36.82178", "product" : {"id" : 4}}, {"id" : "43fc11d5-dde0-4c79-9ec9-b9b1418016ae", "price" : 89.00, "quantity" : 1, "createdAt" : "2025-05-20T00:07:36.82178", "updatedAt" : "2025-05-20T00:07:36.82178", "product" : {"id" : 1}}, {"id" : "ee6c91b9-44cc-4f9c-bd5f-895f60b08d87", "price" : 99.00, "quantity" : 1, "createdAt" : "2025-05-20T00:07:36.82178", "updatedAt" : "2025-05-20T00:07:36.82178", "product" : {"id" : 2}}]
-  },
-  {
-    "id": 14,
-    "totalItems": 3,
-    "totalAmount": 227.00,
-    "status": "APROBADO",
-    "metadata": {"Productos":[{"SKU":"HEA-LIF38213428","Nombre":"LIFE GREEN MORINGA","Cantidad":1,"Precio":49},{"SKU":"HEA-REN73026492","Nombre":"RENEW COLLAGEN","Cantidad":1,"Precio":99},{"SKU":"HEA-SPE64961444","Nombre":"SPEED ENERGY DRINK","Cantidad":1,"Precio":79}]},
-    "createdAt": "2025-06-15 23:24:42.214658",
-    "updatedAt": "2025-06-15 23:59:39.199193",
-    "user": {"userId" : "9a3f8452-9ba8-4614-b30a-b378f207a792", "userEmail" : "jhaime_05@hotmail.com", "userName" : "Jaime Huamani Pariona"},
-    "orderHistory": [{"id" : "715c7e8a-cfc3-4fe6-a1fa-c14477770777", "performedBy" : {"userId" : "9a3f8452-9ba8-4614-b30a-b378f207a792", "userEmail" : "jhaime_05@hotmail.com", "userName" : "Jaime Huamani Pariona"}, "action" : "CREADO", "changes" : null, "notes" : "Orden creada", "metadata" : null, "createdAt" : "2025-06-15T23:24:42.214658"}, {"id" : "cbf15bfd-38a4-498e-a00d-11ddf18dc990", "performedBy" : {"userId" : "c86077fb-bc6f-4b4d-adf8-4d53545eaea8", "userEmail" : "finanzas@nexusplatform.com", "userName" : "Finanzas Nexus"}, "action" : "APROBADO", "changes" : {"Estado anterior":"PENDIENTE","Nuevo estado":"APROBADO"}, "notes" : "Orden aprobada por aprobación de pago", "metadata" : null, "createdAt" : "2025-06-15T23:59:39.199193"}],
-    "orderDetails": [{"id" : "b63c2605-7699-4dbb-8a30-53ebfe74d304", "price" : 49.00, "quantity" : 1, "createdAt" : "2025-06-15T23:24:42.214658", "updatedAt" : "2025-06-15T23:24:42.214658", "product" : {"id" : 4}}, {"id" : "08de4c81-58cd-43a7-807c-d2f8d0df55db", "price" : 99.00, "quantity" : 1, "createdAt" : "2025-06-15T23:24:42.214658", "updatedAt" : "2025-06-15T23:24:42.214658", "product" : {"id" : 2}}, {"id" : "26e8a3c7-0d32-44a0-810a-ba23d5229371", "price" : 79.00, "quantity" : 1, "createdAt" : "2025-06-15T23:24:42.214658", "updatedAt" : "2025-06-15T23:24:42.214658", "product" : {"id" : 5}}]
-  },
-  {
-    "id": 13,
-    "totalItems": 3,
-    "totalAmount": 197.00,
-    "status": "APROBADO",
-    "metadata": {"notes":"Pago desde yape al QR","Productos":[{"SKU":"HEA-REN73026492","Nombre":"RENEW COLLAGEN","Cantidad":1,"Precio":99},{"SKU":"HEA-LIF38213428","Nombre":"LIFE GREEN MORINGA","Cantidad":2,"Precio":49}]},
-    "createdAt": "2025-06-15 23:23:52.771971",
-    "updatedAt": "2025-06-15 23:58:45.034123",
-    "user": {"userId" : "21d5e135-8e84-4c63-a107-f1992b5611fa", "userEmail" : "janettegiovanam@gmail.com", "userName" : "janette mori"},
-    "orderHistory": [{"id" : "08b0c653-a5b1-453f-b402-972d8b9ca0ca", "performedBy" : {"userId" : "21d5e135-8e84-4c63-a107-f1992b5611fa", "userEmail" : "janettegiovanam@gmail.com", "userName" : "janette mori"}, "action" : "CREADO", "changes" : null, "notes" : "Pago desde yape al QR", "metadata" : null, "createdAt" : "2025-06-15T23:23:52.771971"}, {"id" : "698f9c69-8043-4238-80a7-66340e8c49f3", "performedBy" : {"userId" : "c86077fb-bc6f-4b4d-adf8-4d53545eaea8", "userEmail" : "finanzas@nexusplatform.com", "userName" : "Finanzas Nexus"}, "action" : "APROBADO", "changes" : {"Estado anterior":"PENDIENTE","Nuevo estado":"APROBADO"}, "notes" : "Orden aprobada por aprobación de pago", "metadata" : null, "createdAt" : "2025-06-15T23:58:45.034123"}],
-    "orderDetails": [{"id" : "567c32a2-e0a3-4179-b8b5-f6483ad578f7", "price" : 99.00, "quantity" : 1, "createdAt" : "2025-06-15T23:23:52.771971", "updatedAt" : "2025-06-15T23:23:52.771971", "product" : {"id" : 2}}, {"id" : "62909a84-f7ed-4c81-b438-cf19bef379c9", "price" : 49.00, "quantity" : 2, "createdAt" : "2025-06-15T23:23:52.771971", "updatedAt" : "2025-06-15T23:23:52.771971", "product" : {"id" : 4}}]
-  },
-  {
-    "id": 12,
-    "totalItems": 1,
-    "totalAmount": 89.00,
-    "status": "APROBADO",
-    "metadata": {"Productos":[{"SKU":"HEA-CAP55281834","Nombre":"CAPUCCINO BLEND EXCLUSIVE","Cantidad":1,"Precio":89}]},
-    "createdAt": "2025-06-15 23:04:14.944504",
-    "updatedAt": "2025-06-15 23:04:14.944504",
-    "user": {"userId" : "21d5e135-8e84-4c63-a107-f1992b5611fa", "userEmail" : "janettegiovanam@gmail.com", "userName" : "janette mori"},
-    "orderHistory": [{"id" : "68f95fe8-2aab-4018-bd13-1ff39345bebf", "performedBy" : {"userId" : "21d5e135-8e84-4c63-a107-f1992b5611fa", "userEmail" : "janettegiovanam@gmail.com", "userName" : "janette mori"}, "action" : "CREADO", "changes" : null, "notes" : "Orden creada", "metadata" : null, "createdAt" : "2025-06-15T23:04:14.944504"}, {"id" : "504066f3-2470-4070-9bc3-040e91fe806a", "performedBy" : {"userId" : "21d5e135-8e84-4c63-a107-f1992b5611fa", "userEmail" : "janettegiovanam@gmail.com", "userName" : "janette mori"}, "action" : "APROBADO", "changes" : null, "notes" : "Pago aprobado con 89 puntos", "metadata" : null, "createdAt" : "2025-06-15T23:04:14.944504"}],
-    "orderDetails": [{"id" : "1fb94dbf-e421-46ee-bd6a-c994730e0846", "price" : 89.00, "quantity" : 1, "createdAt" : "2025-06-15T23:04:14.944504", "updatedAt" : "2025-06-15T23:04:14.944504", "product" : {"id" : 1}}]
-  },
-  {
-    "id": 11,
-    "totalItems": 4,
-    "totalAmount": 316.00,
-    "status": "APROBADO",
-    "metadata": {"notes":"recogerá Alberthi Huamán Cardenas","Productos":[{"SKU":"HEA-CAP55281834","Nombre":"CAPUCCINO BLEND EXCLUSIVE","Cantidad":3,"Precio":89},{"SKU":"HEA-LIF38213428","Nombre":"LIFE GREEN MORINGA","Cantidad":1,"Precio":49}]},
-    "createdAt": "2025-06-15 20:39:47.237259",
-    "updatedAt": "2025-06-15 20:39:47.237259",
-    "user": {"userId" : "36a5a076-5d66-4d0c-9788-d567cd9c9377", "userEmail" : "jeffersonhuaman.v@gmail.com", "userName" : "Jefferson David Huaman Vargas"},
-    "orderHistory": [{"id" : "8fe11f2f-42a4-4e1d-b6d3-edd828506477", "performedBy" : {"userId" : "36a5a076-5d66-4d0c-9788-d567cd9c9377", "userEmail" : "jeffersonhuaman.v@gmail.com", "userName" : "Jefferson David Huaman Vargas"}, "action" : "APROBADO", "changes" : null, "notes" : "Pago aprobado con 316 puntos", "metadata" : null, "createdAt" : "2025-06-15T20:39:47.237259"}, {"id" : "b9a25fda-28da-41da-89aa-17c9aadc9b9c", "performedBy" : {"userId" : "36a5a076-5d66-4d0c-9788-d567cd9c9377", "userEmail" : "jeffersonhuaman.v@gmail.com", "userName" : "Jefferson David Huaman Vargas"}, "action" : "CREADO", "changes" : null, "notes" : "recogerá Alberthi Huamán Cardenas", "metadata" : null, "createdAt" : "2025-06-15T20:39:47.237259"}],
-    "orderDetails": [{"id" : "90dfac67-6e63-49c4-befe-3fd760ca6d01", "price" : 89.00, "quantity" : 3, "createdAt" : "2025-06-15T20:39:47.237259", "updatedAt" : "2025-06-15T20:39:47.237259", "product" : {"id" : 1}}, {"id" : "b9b97413-9d12-4941-b37c-68fd660c913f", "price" : 49.00, "quantity" : 1, "createdAt" : "2025-06-15T20:39:47.237259", "updatedAt" : "2025-06-15T20:39:47.237259", "product" : {"id" : 4}}]
-  },
-  {
-    "id": 10,
-    "totalItems": 1,
-    "totalAmount": 99.00,
-    "status": "APROBADO",
-    "metadata": {"notes":"Realizado al QR de NEXUS H. Global","Productos":[{"SKU":"HEA-REN73026492","Nombre":"RENEW COLLAGEN","Cantidad":1,"Precio":99}]},
-    "createdAt": "2025-06-15 19:57:22.076763",
-    "updatedAt": "2025-06-15 21:42:52.376014",
-    "user": {"userId" : "40ee4f53-45ff-4e4d-bd9b-d4f7bd124bfb", "userEmail" : "joselyn.lizarraga.larenas@gmail.com", "userName" : "Joselyn Lizarraga Larenas"},
-    "orderHistory": [{"id" : "61fc38ae-fd2c-407d-b6f4-e78baba1a69f", "performedBy" : {"userId" : "40ee4f53-45ff-4e4d-bd9b-d4f7bd124bfb", "userEmail" : "joselyn.lizarraga.larenas@gmail.com", "userName" : "Joselyn Lizarraga Larenas"}, "action" : "CREADO", "changes" : null, "notes" : "Realizado al QR de NEXUS H. Global", "metadata" : null, "createdAt" : "2025-06-15T19:57:22.076763"}, {"id" : "3e1efa98-21d0-44ec-aa50-6711cbd3dd9f", "performedBy" : {"userId" : "c86077fb-bc6f-4b4d-adf8-4d53545eaea8", "userEmail" : "finanzas@nexusplatform.com", "userName" : "Finanzas Nexus"}, "action" : "APROBADO", "changes" : {"Estado anterior":"PENDIENTE","Nuevo estado":"APROBADO"}, "notes" : "Orden aprobada por aprobación de pago", "metadata" : null, "createdAt" : "2025-06-15T21:42:52.376014"}],
-    "orderDetails": [{"id" : "efce58f0-b08c-4753-bd47-0604299dfc93", "price" : 99.00, "quantity" : 1, "createdAt" : "2025-06-15T19:57:22.076763", "updatedAt" : "2025-06-15T19:57:22.076763", "product" : {"id" : 2}}]
-  },
-  {
-    "id": 9,
-    "totalItems": 1,
-    "totalAmount": 49.00,
-    "status": "APROBADO",
-    "metadata": {"Productos":[{"SKU":"HEA-LIF38213428","Nombre":"LIFE GREEN MORINGA","Cantidad":1,"Precio":49}]},
-    "createdAt": "2025-06-12 20:37:55.203504",
-    "updatedAt": "2025-06-12 20:37:55.203504",
-    "user": {"userId" : "917dd646-9812-402b-bfd5-0bb1c1cf6b79", "userEmail" : "gza64@hotmail.com", "userName" : "Gaby del Rosario Zapata Atoche"},
-    "orderHistory": [{"id" : "570cdf0b-fcd4-4823-aad7-f5628ea64402", "performedBy" : {"userId" : "917dd646-9812-402b-bfd5-0bb1c1cf6b79", "userEmail" : "gza64@hotmail.com", "userName" : "Gaby del Rosario Zapata Atoche"}, "action" : "CREADO", "changes" : null, "notes" : "Orden creada", "metadata" : null, "createdAt" : "2025-06-12T20:37:55.203504"}, {"id" : "aaf98432-5f2f-43c3-9a1e-bcc0deae1975", "performedBy" : {"userId" : "917dd646-9812-402b-bfd5-0bb1c1cf6b79", "userEmail" : "gza64@hotmail.com", "userName" : "Gaby del Rosario Zapata Atoche"}, "action" : "APROBADO", "changes" : null, "notes" : "Pago aprobado con 49 puntos", "metadata" : null, "createdAt" : "2025-06-12T20:37:55.203504"}],
-    "orderDetails": [{"id" : "7719aea2-5c77-4a28-9a62-15e22799c0b0", "price" : 49.00, "quantity" : 1, "createdAt" : "2025-06-12T20:37:55.203504", "updatedAt" : "2025-06-12T20:37:55.203504", "product" : {"id" : 4}}]
-  },
-  {
-    "id": 8,
-    "totalItems": 3,
-    "totalAmount": 227.00,
-    "status": "APROBADO",
-    "metadata": {"Productos":[{"SKU":"HEA-LIF38213428","Nombre":"LIFE GREEN MORINGA","Cantidad":1,"Precio":49},{"SKU":"HEA-REN73026492","Nombre":"RENEW COLLAGEN","Cantidad":1,"Precio":99},{"SKU":"HEA-SPE64961444","Nombre":"SPEED ENERGY DRINK","Cantidad":1,"Precio":79}]},
-    "createdAt": "2025-06-12 20:36:12.146562",
-    "updatedAt": "2025-06-12 20:36:12.146562",
-    "user": {"userId" : "917dd646-9812-402b-bfd5-0bb1c1cf6b79", "userEmail" : "gza64@hotmail.com", "userName" : "Gaby del Rosario Zapata Atoche"},
-    "orderHistory": [{"id" : "d9b6bdb4-d378-498f-9444-75dd9ec138aa", "performedBy" : {"userId" : "917dd646-9812-402b-bfd5-0bb1c1cf6b79", "userEmail" : "gza64@hotmail.com", "userName" : "Gaby del Rosario Zapata Atoche"}, "action" : "CREADO", "changes" : null, "notes" : "Orden creada", "metadata" : null, "createdAt" : "2025-06-12T20:36:12.146562"}, {"id" : "8cff7955-5f13-40ba-992e-9a7652ace09c", "performedBy" : {"userId" : "917dd646-9812-402b-bfd5-0bb1c1cf6b79", "userEmail" : "gza64@hotmail.com", "userName" : "Gaby del Rosario Zapata Atoche"}, "action" : "APROBADO", "changes" : null, "notes" : "Pago aprobado con 227 puntos", "metadata" : null, "createdAt" : "2025-06-12T20:36:12.146562"}],
-    "orderDetails": [{"id" : "471ec8e7-6d66-4ac9-8b9f-d3ed0bba5d1c", "price" : 49.00, "quantity" : 1, "createdAt" : "2025-06-12T20:36:12.146562", "updatedAt" : "2025-06-12T20:36:12.146562", "product" : {"id" : 4}}, {"id" : "f5b9cad9-18b2-49df-9a1f-9ea96dd089f1", "price" : 99.00, "quantity" : 1, "createdAt" : "2025-06-12T20:36:12.146562", "updatedAt" : "2025-06-12T20:36:12.146562", "product" : {"id" : 2}}, {"id" : "53cfd27d-f4ba-43c4-bcd9-d91ddcb9baab", "price" : 79.00, "quantity" : 1, "createdAt" : "2025-06-12T20:36:12.146562", "updatedAt" : "2025-06-12T20:36:12.146562", "product" : {"id" : 5}}]
-  },
-  {
-    "id": 7,
-    "totalItems": 3,
-    "totalAmount": 277.00,
-    "status": "APROBADO",
-    "metadata": {"Productos":[{"SKU":"HEA-CAP55281834","Nombre":"CAPUCCINO BLEND EXCLUSIVE","Cantidad":2,"Precio":89},{"SKU":"HEA-REN73026492","Nombre":"RENEW COLLAGEN","Cantidad":1,"Precio":99}]},
-    "createdAt": "2025-06-11 03:09:27.289853",
-    "updatedAt": "2025-06-11 03:09:27.289853",
-    "user": {"userId" : "0019895d-a133-4943-a6ba-ba04a1b4c4a3", "userEmail" : "trabajodelfuturo@hotmail.com", "userName" : "Ernesto Ala Vasquez"},
-    "orderHistory": [{"id" : "45fd2a72-764d-4a72-b821-2f2f431a3ce1", "performedBy" : {"userId" : "0019895d-a133-4943-a6ba-ba04a1b4c4a3", "userEmail" : "trabajodelfuturo@hotmail.com", "userName" : "Ernesto Ala Vasquez"}, "action" : "APROBADO", "changes" : null, "notes" : "Pago aprobado con 277 puntos", "metadata" : null, "createdAt" : "2025-06-11T03:09:27.289853"}, {"id" : "14cbe91d-793e-4225-83f9-c73b15f7778d", "performedBy" : {"userId" : "0019895d-a133-4943-a6ba-ba04a1b4c4a3", "userEmail" : "trabajodelfuturo@hotmail.com", "userName" : "Ernesto Ala Vasquez"}, "action" : "CREADO", "changes" : null, "notes" : "Orden creada", "metadata" : null, "createdAt" : "2025-06-11T03:09:27.289853"}],
-    "orderDetails": [{"id" : "98af0021-3612-4768-99af-95522c06c0c6", "price" : 89.00, "quantity" : 2, "createdAt" : "2025-06-11T03:09:27.289853", "updatedAt" : "2025-06-11T03:09:27.289853", "product" : {"id" : 1}}, {"id" : "f2833686-0368-4fef-b8b5-3e44d8b7f638", "price" : 99.00, "quantity" : 1, "createdAt" : "2025-06-11T03:09:27.289853", "updatedAt" : "2025-06-11T03:09:27.289853", "product" : {"id" : 2}}]
-  },
-  {
-    "id": 6,
-    "totalItems": 1,
-    "totalAmount": 89.00,
-    "status": "APROBADO",
-    "metadata": {"Productos":[{"SKU":"HEA-CAP55281834","Nombre":"CAPUCCINO BLEND EXCLUSIVE","Cantidad":1,"Precio":89}]},
-    "createdAt": "2025-06-10 02:16:26.856381",
-    "updatedAt": "2025-06-10 02:17:40.275402",
-    "user": {"userId" : "9a3f8452-9ba8-4614-b30a-b378f207a792", "userEmail" : "jhaime_05@hotmail.com", "userName" : "Jaime Huamani Pariona"},
-    "orderHistory": [{"id" : "f18e7519-e808-475f-bfaf-97668c373492", "performedBy" : {"userId" : "9a3f8452-9ba8-4614-b30a-b378f207a792", "userEmail" : "jhaime_05@hotmail.com", "userName" : "Jaime Huamani Pariona"}, "action" : "CREADO", "changes" : null, "notes" : "Orden creada", "metadata" : null, "createdAt" : "2025-06-10T02:16:26.856381"}, {"id" : "b7c3710d-1c8b-4ee3-b615-ea7f21502bf7", "performedBy" : {"userId" : "c86077fb-bc6f-4b4d-adf8-4d53545eaea8", "userEmail" : "finanzas@nexusplatform.com", "userName" : "Finanzas Nexus"}, "action" : "APROBADO", "changes" : {"Estado anterior":"PENDIENTE","Nuevo estado":"APROBADO"}, "notes" : "Orden aprobada por aprobación de pago", "metadata" : null, "createdAt" : "2025-06-10T02:17:40.275402"}],
-    "orderDetails": [{"id" : "b9e2b3ee-5ea2-4631-91b1-26d5e12f9a71", "price" : 89.00, "quantity" : 1, "createdAt" : "2025-06-10T02:16:26.856381", "updatedAt" : "2025-06-10T02:16:26.856381", "product" : {"id" : 1}}]
-  },
-  {
-    "id": 5,
-    "totalItems": 2,
-    "totalAmount": 178.00,
-    "status": "APROBADO",
-    "metadata": {"Productos":[{"SKU":"HEA-REN73026492","Nombre":"RENEW COLLAGEN","Cantidad":1,"Precio":99},{"SKU":"HEA-SPE64961444","Nombre":"SPEED ENERGY DRINK","Cantidad":1,"Precio":79}]},
-    "createdAt": "2025-06-01 03:59:21.860511",
-    "updatedAt": "2025-06-01 03:59:21.860511",
-    "user": {"userId" : "40ee4f53-45ff-4e4d-bd9b-d4f7bd124bfb", "userEmail" : "joselyn.lizarraga.larenas@gmail.com", "userName" : "Joselyn Lizarraga Larenas"},
-    "orderHistory": [{"id" : "85d70bb6-2133-42a1-8e52-0fddc8c70875", "performedBy" : {"userId" : "40ee4f53-45ff-4e4d-bd9b-d4f7bd124bfb", "userEmail" : "joselyn.lizarraga.larenas@gmail.com", "userName" : "Joselyn Lizarraga Larenas"}, "action" : "CREADO", "changes" : null, "notes" : "Orden creada", "metadata" : null, "createdAt" : "2025-06-01T03:59:21.860511"}, {"id" : "0599f589-7b82-4cbf-a481-b4f283379c3b", "performedBy" : {"userId" : "40ee4f53-45ff-4e4d-bd9b-d4f7bd124bfb", "userEmail" : "joselyn.lizarraga.larenas@gmail.com", "userName" : "Joselyn Lizarraga Larenas"}, "action" : "APROBADO", "changes" : null, "notes" : "Pago aprobado con 178 puntos", "metadata" : null, "createdAt" : "2025-06-01T03:59:21.860511"}],
-    "orderDetails": [{"id" : "985a5c57-bee4-459c-bdb9-8c036ba741fb", "price" : 99.00, "quantity" : 1, "createdAt" : "2025-06-01T03:59:21.860511", "updatedAt" : "2025-06-01T03:59:21.860511", "product" : {"id" : 2}}, {"id" : "3bbd49f2-514f-4e69-9d6d-d60ac4afe84c", "price" : 79.00, "quantity" : 1, "createdAt" : "2025-06-01T03:59:21.860511", "updatedAt" : "2025-06-01T03:59:21.860511", "product" : {"id" : 5}}]
-  },
-  {
-    "id": 4,
-    "totalItems": 8,
-    "totalAmount": 592.00,
-    "status": "APROBADO",
-    "metadata": {"Productos":[{"SKU":"HEA-CAP55281834","Nombre":"CAPUCCINO BLEND EXCLUSIVE","Cantidad":5,"Precio":89},{"SKU":"HEA-LIF38213428","Nombre":"LIFE GREEN MORINGA","Cantidad":3,"Precio":49}]},
-    "createdAt": "2025-06-01 03:49:15.746201",
-    "updatedAt": "2025-06-01 03:49:15.746201",
-    "user": {"userId" : "9d119abe-f6a0-4b19-a6ad-c4e06aff80ad", "userEmail" : "walterhuaman44@gmail.com", "userName" : "walter alberthi huaman cardenas"},
-    "orderHistory": [{"id" : "ae376b43-3bef-4f84-9c9c-d166fe6a15e0", "performedBy" : {"userId" : "9d119abe-f6a0-4b19-a6ad-c4e06aff80ad", "userEmail" : "walterhuaman44@gmail.com", "userName" : "walter alberthi huaman cardenas"}, "action" : "CREADO", "changes" : null, "notes" : "Orden creada", "metadata" : null, "createdAt" : "2025-06-01T03:49:15.746201"}, {"id" : "0d677670-5b00-46d1-84cd-c6fb57cbf8b4", "performedBy" : {"userId" : "9d119abe-f6a0-4b19-a6ad-c4e06aff80ad", "userEmail" : "walterhuaman44@gmail.com", "userName" : "walter alberthi huaman cardenas"}, "action" : "APROBADO", "changes" : null, "notes" : "Pago aprobado con 592 puntos", "metadata" : null, "createdAt" : "2025-06-01T03:49:15.746201"}],
-    "orderDetails": [{"id" : "084b6045-36cd-4115-86f2-49df7ff92d60", "price" : 89.00, "quantity" : 5, "createdAt" : "2025-06-01T03:49:15.746201", "updatedAt" : "2025-06-01T03:49:15.746201", "product" : {"id" : 1}}, {"id" : "bb82636c-d734-49d8-9737-d1c118dfbe7b", "price" : 49.00, "quantity" : 3, "createdAt" : "2025-06-01T03:49:15.746201", "updatedAt" : "2025-06-01T03:49:15.746201", "product" : {"id" : 4}}]
-  },
-  {
-    "id": 3,
-    "totalItems": 1,
-    "totalAmount": 49.00,
-    "status": "APROBADO",
-    "metadata": {"Productos":[{"SKU":"HEA-LIF38213428","Nombre":"LIFE GREEN MORINGA","Cantidad":1,"Precio":49}]},
-    "createdAt": "2025-05-29 23:36:06.198803",
-    "updatedAt": "2025-05-29 23:36:06.198803",
-    "user": {"userId" : "917dd646-9812-402b-bfd5-0bb1c1cf6b79", "userEmail" : "gza64@hotmail.com", "userName" : "Gaby del Rosario Zapata Atoche"},
-    "orderHistory": [{"id" : "ab6b9403-2c64-448f-9682-3105538f2477", "performedBy" : {"userId" : "917dd646-9812-402b-bfd5-0bb1c1cf6b79", "userEmail" : "gza64@hotmail.com", "userName" : "Gaby del Rosario Zapata Atoche"}, "action" : "CREADO", "changes" : null, "notes" : "Orden creada", "metadata" : null, "createdAt" : "2025-05-29T23:36:06.198803"}, {"id" : "9c2717ad-3f61-4af7-ac73-62c54b011cc6", "performedBy" : {"userId" : "917dd646-9812-402b-bfd5-0bb1c1cf6b79", "userEmail" : "gza64@hotmail.com", "userName" : "Gaby del Rosario Zapata Atoche"}, "action" : "APROBADO", "changes" : null, "notes" : "Pago aprobado con 49 puntos", "metadata" : null, "createdAt" : "2025-05-29T23:36:06.198803"}],
-    "orderDetails": [{"id" : "a947a600-bbd1-4352-92c0-ca802f88f394", "price" : 49.00, "quantity" : 1, "createdAt" : "2025-05-29T23:36:06.198803", "updatedAt" : "2025-05-29T23:36:06.198803", "product" : {"id" : 4}}]
-  },
-  {
-    "id": 1,
-    "totalItems": 4,
-    "totalAmount": 196.00,
-    "status": "APROBADO",
-    "metadata": {"Productos":[{"SKU":"HEA-LIF38213428","Nombre":"LIFE GREEN MORINGA","Cantidad":4,"Precio":49}]},
-    "createdAt": "2025-05-16 23:42:46.710899",
-    "updatedAt": "2025-05-17 17:44:19.609087",
-    "user": {"userId" : "d0459d2f-2a72-47ee-a844-64dd7d75a77c", "userEmail" : "maryhuamanb@gmail.com", "userName" : "María Reymundina Huaman Blas"},
-    "orderHistory": [{"id" : "c27ae822-ade7-4d6b-9dbf-4f2bcccb0c56", "performedBy" : {"userId" : "d0459d2f-2a72-47ee-a844-64dd7d75a77c", "userEmail" : "maryhuamanb@gmail.com", "userName" : "María Reymundina Huaman Blas"}, "action" : "CREADO", "changes" : null, "notes" : "Orden creada", "metadata" : null, "createdAt" : "2025-05-16T23:42:46.710899"}, {"id" : "a808ffcb-9bbf-4064-9a52-3b940e44b119", "performedBy" : {"userId" : "c86077fb-bc6f-4b4d-adf8-4d53545eaea8", "userEmail" : "finanzas@nexusplatform.com", "userName" : "Finanzas Nexus"}, "action" : "APROBADO", "changes" : {"Estado anterior":"PENDIENTE","Nuevo estado":"APROBADO"}, "notes" : "Orden aprobada por aprobación de pago", "metadata" : null, "createdAt" : "2025-05-17T17:44:19.609087"}],
-    "orderDetails": [{"id" : "31ff2a34-3897-41bc-a0f8-279807a3d060", "price" : 49.00, "quantity" : 4, "createdAt" : "2025-05-16T23:42:46.710899", "updatedAt" : "2025-05-16T23:42:46.710899", "product" : {"id" : 4}}]
+    "user": {
+      "userEmail": "gza64@hotmail.com"
+    },
+    "orderHistory": [
+      {
+        "id": "b5bf7929-61ab-4870-b50c-0cf3d64e7841",
+        "performedBy": {
+          "userEmail": "gza64@hotmail.com"
+        },
+        "action": "CREADO",
+        "changes": null,
+        "notes": "Orden creada",
+        "metadata": null,
+        "createdAt": "2025-07-12T13:37:44.02584"
+      },
+      {
+        "id": "6ab61658-4d32-4720-b64b-21a3a7f49f80",
+        "performedBy": {
+          "userEmail": "gza64@hotmail.com"
+        },
+        "action": "APROBADO",
+        "changes": null,
+        "notes": "Pago aprobado con 247 puntos",
+        "metadata": null,
+        "createdAt": "2025-07-12T13:37:44.02584"
+      }
+    ],
+    "orderDetails": [
+      {
+        "id": "d434a243-2cd8-4647-bb1d-9db4e5fbc468",
+        "price": 49.00,
+        "quantity": 1,
+        "createdAt": "2025-07-12T13:37:44.02584",
+        "updatedAt": "2025-07-12T13:37:44.02584",
+        "product": {
+          "id": 4
+        }
+      },
+      {
+        "id": "7e21e2eb-e8f9-4324-a396-7e83b64caff7",
+        "price": 99.00,
+        "quantity": 2,
+        "createdAt": "2025-07-12T13:37:44.02584",
+        "updatedAt": "2025-07-12T13:37:44.02584",
+        "product": {
+          "id": 2
+        }
+      }
+    ]
   }
 ]
