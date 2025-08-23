@@ -14,6 +14,26 @@ services:
     networks:
       - nexus-network
 
+  # Dozzle - Log Viewer para todos los contenedores
+  dozzle:
+    container_name: nexus-dozzle
+    image: amir20/dozzle:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    ports:
+      - "${DOZZLE_PORT:-9999}:8080"
+    environment:
+      - DOZZLE_LEVEL=info
+      - DOZZLE_TAILSIZE=300
+      # - DOZZLE_FILTER="name=nexus-*,name=ms-*" # Solo mostrar contenedores de nexus
+      - DOZZLE_ENABLE_ACTIONS=true
+    networks:
+      - nexus-network
+    restart: unless-stopped
+    labels:
+      - "dozzle.enable=true"
+      - "dozzle.name=Nexus Log Viewer"
+
   # API Gateway
   nexus-gateway:
     build:
@@ -42,6 +62,9 @@ services:
       - nexus-network
     command: ["pnpm", "run", "start:dev"]
     restart: unless-stopped
+    labels:
+      - "dozzle.enable=true"
+      - "dozzle.name=API Gateway"
 
   # Microservicio de Usuarios
   ms-users:
@@ -69,6 +92,9 @@ services:
       - nexus-network
     command: ["pnpm", "run", "start:dev"]
     restart: unless-stopped
+    labels:
+      - "dozzle.enable=true"
+      - "dozzle.name=Users Service"
 
   ms-unilevel:
     build:
@@ -79,6 +105,8 @@ services:
       - NODE_ENV=${NODE_ENV}
       - PORT=${MS_UNILEVEL_PORT}
       - NATS_SERVERS=${NATS_SERVERS}
+      - HUERTAS_API_KEY=${HUERTAS_API_KEY}
+      - HUERTAS_API_URL=${HUERTAS_API_URL}
       # PostgreSQL Configuration (External Server)
       - UNILEVEL_DATABASE_URL=${UNILEVEL_DATABASE_URL}
     volumes:
@@ -95,6 +123,9 @@ services:
       - nexus-network
     command: ["pnpm", "run", "start:dev"]
     restart: unless-stopped
+    labels:
+      - "dozzle.enable=true"
+      - "dozzle.name=Unilevel Service"
 
   # Microservicio de Integración
   ms-integration:
@@ -116,7 +147,7 @@ services:
       - AWS_SES_SMTP_PASSWORD=${AWS_SES_SMTP_PASSWORD}
       - EMAIL_FROM=${EMAIL_FROM}
       # API Tokens
-      - PA_TOKEN_PERUAPIS=${PA_TOKEN_PERUAPIS}
+      - DECOLECTA_API_TOKEN=${DECOLECTA_API_TOKEN}
     volumes:
       # Montar código fuente para hot reload
       - ./ms-nexus-integration/src:/app/src:cached
@@ -131,6 +162,9 @@ services:
       - nexus-network
     command: ["pnpm", "run", "start:dev"]
     restart: unless-stopped
+    labels:
+      - "dozzle.enable=true"
+      - "dozzle.name=Integration Service"
 
   # Microservicio de Auth
   ms-auth:
@@ -160,6 +194,9 @@ services:
       - nexus-network
     command: ["pnpm", "run", "start:dev"]
     restart: unless-stopped
+    labels:
+      - "dozzle.enable=true"
+      - "dozzle.name=Auth Service"
 
   # Microservicio de Payment
   ms-payment:
@@ -189,6 +226,9 @@ services:
       - nexus-network
     command: ["pnpm", "run", "start:dev"]
     restart: unless-stopped
+    labels:
+      - "dozzle.enable=true"
+      - "dozzle.name=Payment Service"
 
   # Microservicio de Membership
   ms-membership:
@@ -216,6 +256,9 @@ services:
       - nexus-network
     command: ["pnpm", "run", "start:dev"]
     restart: unless-stopped
+    labels:
+      - "dozzle.enable=true"
+      - "dozzle.name=Membership Service"
 
   # Microservicio de Point
   ms-point:
@@ -243,6 +286,9 @@ services:
       - nexus-network
     command: ["pnpm", "run", "start:dev"]
     restart: unless-stopped
+    labels:
+      - "dozzle.enable=true"
+      - "dozzle.name=Point Service"
 
   # Solo volúmenes necesarios para NATS
   ms-order:
@@ -270,6 +316,36 @@ services:
       - nexus-network
     command: ["pnpm", "run", "start:dev"]
     restart: unless-stopped
+    labels:
+      - "dozzle.enable=true"
+      - "dozzle.name=Order Service"
+
+  ms-app:
+    build:
+      context: ./ms-nexus-app
+      dockerfile: Dockerfile.dev
+      target: development
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - PORT=${MS_APP_PORT}
+      - NATS_SERVERS=${NATS_SERVERS}
+      - APP_DATABASE_URL=${APP_DATABASE_URL}
+    volumes:
+      - ./ms-nexus-app/src:/app/src:cached
+      - ./ms-nexus-app/package.json:/app/package.json:cached
+      - ./ms-nexus-app/tsconfig.json:/app/tsconfig.json:cached
+      - ./ms-nexus-app/nest-cli.json:/app/nest-cli.json:cached
+      - /app/node_modules
+    depends_on:
+      - nats
+    networks:
+      - nexus-network
+    command: ["pnpm", "run", "start:dev"]
+    restart: unless-stopped
+    labels:
+      - "dozzle.enable=true"
+      - "dozzle.name=App Service"
+
 volumes:
   nats_data:
     driver: local

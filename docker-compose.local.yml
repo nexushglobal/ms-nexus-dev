@@ -108,7 +108,7 @@ services:
       - AWS_SES_SMTP_PASSWORD=${AWS_SES_SMTP_PASSWORD}
       - EMAIL_FROM=${EMAIL_FROM}
       # API Tokens
-      - PA_TOKEN_PERUAPIS=${PA_TOKEN_PERUAPIS}
+      - DECOLECTA_API_TOKEN=${DECOLECTA_API_TOKEN}
     volumes:
       # Montar código fuente para hot reload
       - ./ms-nexus-integration/src:/app/src:cached

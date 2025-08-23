@@ -1,0 +1,54 @@
+Quiero que crees las siguiente
+
+En el microservicio de app (ms-nexus-app) 
+crear las entidades para lead 
+este debe tener: fullName, email ,telefono,metadata y opcional un mensaje ademas de los de create y update
+
+una vez creado quiero las siguientes MessagePatters:
+- Crear Lead
+    * si el lead ya existe ya sea telefono o email, no debe retornar error,debe actualizar el lead existente y en metadata debe guardar el anterior registro
+- Listado de Leads con paginación y filtro por fechas
+    * El orden siempre debe ser por updatedAt de forma descendente (no se puede cambiar)
+    * para la paginacion tomar de referencia el microservicio de ms-nexus-payment y su gateway en ms-nexus-gateway
+        -ms-nexus-payment/src/withdrawals/withdrawals.controller.ts
+        -ms-nexus-gateway/src/payments/controllers/withdrawals.controller.ts
+- Descargar Leads en formato CSV segun rango de fechas
+    * debe retornar un archivo CSV con los leads en el rango de fechas especificado
+
+una vez creado los MessagePatterns, quiero que crees las apis en ms-nexus-gateway
+
+1. Crear Lead (POST) (sin autenticación)
+   - Endpoint: /leads
+   - Request Body: { fullName, email, telefono y mensaje (opcional) }
+   - Response: Lead creado o actualizado
+2. Listar Leads (GET) (role=FAC)
+   - Endpoint: /leads
+   - Query Parameters: { page, limit, startDate, endDate }
+   - Response: Listado de leads con paginación
+3. Descargar Leads (GET) (role=FAC)
+   - Endpoint: /leads/download
+   - Query Parameters: { startDate, endDate }
+   - Response: Archivo CSV con los leads en el rango de fechas especificado
+
+
+Quiero que integremos 3 apis en feature/leads 
+1. Crear Lead (POST) 
+   - Endpoint: /leads
+   - Request Body: { fullName, email, phone y message (opcional) }
+   - Response: Lead creado o actualizado
+2. Listar Leads (GET) 
+   - Endpoint: /leads
+   - Query Parameters: { page, limit, startDate, endDate }
+   - Response: {id:number, fullName:string, email:string, phone:string, message?:string, createdAt:Date, updatedAt:Date, metadata?:Record<string, any>}[]
+3. Descargar Leads (GET)
+   - Endpoint: /leads/download
+   - Query Parameters: { startDate, endDate }
+   - Response: Archivo CSV con los leads en el rango de fechas especificado
+
+ahora quiero que hagamos la ui
+en la ruta raiz / en la parte inferior hay un formulario ahi usaremos la primera api para crear leads, agregar los campos que hacen falta e integrar la api en el formulario.
+al finalizar debe limpiar el formulario y salir confeti 
+
+en el la ruta /dashboard/(facturacion)/fac-leads se debe listar los leads con paginacion y filtros por fechas, table para desktop y cards para mobile
+tomar de referencia la ui de pagos en /src/app/dashboard/(cliente)/cli-transacciones/mis-retiros/page.tsx
+debe haber un boton para descargar y este abrira un modal donde se podran seleccionar las fechas de inicio y fin para la descarga del archivo CSV.
