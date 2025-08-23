@@ -76,6 +76,7 @@ A comprehensive multi-level marketing (MLM) platform built with modern microserv
 ## 🛠️ Technology Stack
 
 ### Backend
+
 - **Framework**: NestJS with TypeScript
 - **Message Broker**: NATS for inter-service communication
 - **Databases**: PostgreSQL (most services), MongoDB (users)
@@ -84,6 +85,7 @@ A comprehensive multi-level marketing (MLM) platform built with modern microserv
 - **ORM**: TypeORM for PostgreSQL services
 
 ### Frontend
+
 - **Framework**: Next.js 15 with React 19
 - **Routing**: App Router with nested layouts
 - **Styling**: Tailwind CSS with custom design system
@@ -92,6 +94,7 @@ A comprehensive multi-level marketing (MLM) platform built with modern microserv
 - **UI Components**: Radix UI primitives
 
 ### Infrastructure
+
 - **Containerization**: Docker with multi-stage builds
 - **Development**: Hot reload with volume mounts
 - **Logging**: Dozzle for container log aggregation
@@ -100,6 +103,7 @@ A comprehensive multi-level marketing (MLM) platform built with modern microserv
 ## 📦 Services
 
 ### Core Services
+
 - **API Gateway** (`ms-nexus-gateway`): Single entry point with authentication
 - **Users Service** (`ms-nexus-user`): User profiles, team trees, roles
 - **Auth Service** (`ms-nexus-auth`): JWT token management
@@ -111,9 +115,11 @@ A comprehensive multi-level marketing (MLM) platform built with modern microserv
 - **Integration Service** (`ms-nexus-integration`): External APIs (AWS, SES)
 
 ### Frontend
+
 - **Nexus App** (`frontend-nexus-app`): Main user interface
 
 ### Tools
+
 - **Migration Tool** (`py-migration-nexus`): Data migration utility
 
 ## 🔧 Development Commands
@@ -160,24 +166,28 @@ During development, services are available at:
 ## 💼 MLM Business Logic
 
 ### Point System
+
 - User point balances tracking
 - Weekly team volume calculations
 - Left/Right binary tree structure
 - Automated commission processing
 
 ### Membership System
+
 - Multiple membership tiers
 - Recurring subscription payments
 - Member plan upgrades
 - Membership renewal processing
 
 ### Payment Processing
+
 - Culqi credit card integration
 - Member withdrawal system
 - Admin approval workflows
 - Complete transaction audit trail
 
 ### User Hierarchy
+
 - Multi-level sponsor relationships
 - Binary tree for volume calculations
 - Role-based access control
@@ -206,6 +216,7 @@ microservices/
 ## 🔐 Environment Configuration
 
 ### Development Environments
+
 - **`.env.dev`**: External databases (development servers)
 - **`.env.local`**: Local databases (Docker containers)
 - **`.env.test`**: Testing environment
@@ -215,6 +226,7 @@ Each microservice has its own `.env` and `.env.example` files with database conn
 ## 🐛 Debugging
 
 ### Container Logs
+
 ```bash
 # All services
 .\dev-docker.ps1 logs
@@ -227,6 +239,7 @@ Each microservice has its own `.env` and `.env.example` files with database conn
 ```
 
 ### Service Shell Access
+
 ```bash
 # Access any service container
 .\dev-docker.ps1 shell nexus-gateway
@@ -234,6 +247,7 @@ Each microservice has its own `.env` and `.env.example` files with database conn
 ```
 
 ### Health Monitoring
+
 ```bash
 # Check all service health
 .\dev-docker.ps1 test
